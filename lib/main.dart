@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/auth/auth.dart';
+import 'package:yoko_app/features/auth/presentation/pages/login.dart';
+import 'package:yoko_app/features/auth/presentation/pages/register.dart';
 import 'package:yoko_app/features/auth/presentation/pages/welcome.dart';
 import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/injection_container.dart';
 import 'package:yoko_app/utils/services/hive/main_box.dart';
 
 void main() async {
-  await MainBoxMixin.initHive('aba');
+  await MainBoxMixin.initHive('abaaa');
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
   await initializeDependencies();
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
           loginUserCase: sl(),
           registerUseCase: sl(),
         )..add(AuthCheckLocal()),
-        child: const WelcomePage(),
+        child: const RegisterPage(),
       ),
     );
   }
