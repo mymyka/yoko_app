@@ -1,6 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yoko_app/features/auth/auth.dart';
+import 'package:yoko_app/utils/services/hive/main_box.dart';
 
-void main() {
+void main() async {
+  await MainBoxMixin.initHive('ab');
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -31,7 +37,25 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: BlocProvider<AuthBloc>(
+        create: (context) => AuthBloc(
+          loginUserCase: LoginUserCase(
+            AuthRepositoryImpl(
+              AuthRemoteDataSource(
+                Dio()..interceptors.add(LogInterceptor()),
+              ),
+            ),
+          ),
+          registerUseCase: RegisterUseCase(
+            AuthRepositoryImpl(
+              AuthRemoteDataSource(
+                Dio(),
+              ),
+            ),
+          ),
+        )..add(AuthCheckLocal()),
+        child: const MyHomePage(title: 'Flutter Demo Home Page'),
+      ),
     );
   }
 }
@@ -86,34 +110,48 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          return Center(
+            // Center is a layout widget. It takes a single child and positions it
+            // in the middle of the parent.
+            child: Column(
+              // Column is also a layout widget. It takes a list of children and
+              // arranges them vertically. By default, it sizes itself to fit its
+              // children horizontally, and tries to be as tall as its parent.
+              //
+              // Column has various properties to control how it sizes itself and
+              // how it positions its children. Here we use mainAxisAlignment to
+              // center the children vertically; the main axis here is the vertical
+              // axis because Columns are vertical (the cross axis would be
+              // horizontal).
+              //
+              // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+              // action in the IDE, or press "p" in the console), to see the
+              // wireframe for each widget.
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                if (state is AuthSuccess) Text('User: ${state.user.user.name}'),
+                if (state is AuthSuccess) Text('Token: ${state.user.token}'),
+                if (state is AuthFailure)
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<AuthBloc>().add(
+                            const AuthLogin(
+                              params: LogInParams(
+                                email: 'test@gmail.com',
+                                password: 'rootroot',
+                              ),
+                            ),
+                          );
+                    },
+                    child: const Text('Register'),
+                  ),
+                if (state is AuthLoading) const CircularProgressIndicator(),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
