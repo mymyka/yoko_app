@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
@@ -43,19 +43,19 @@ class _LoginPageState extends State<LoginPage> {
                       controller: _emailController,
                       decoration: InputDecoration(
                         labelText: 'Email',
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Theme.of(context).primaryColor),
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     TextField(
                       controller: _passwordController,
                       decoration: InputDecoration(
                         labelText: 'Password',
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Theme.of(context).primaryColor),

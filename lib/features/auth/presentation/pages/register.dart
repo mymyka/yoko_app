@@ -4,7 +4,7 @@ import 'package:yoko_app/features/auth/auth.dart';
 import 'package:yoko_app/features/auth/presentation/pages/welcome.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({super.key});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -43,43 +43,43 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: _nameController,
                       decoration: InputDecoration(
                         labelText: 'Name',
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Theme.of(context).primaryColor),
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     TextField(
                       controller: _surnameController,
                       decoration: InputDecoration(
                         labelText: 'Surname',
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Theme.of(context).primaryColor),
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     TextField(
                       controller: _emailController,
                       decoration: InputDecoration(
                         labelText: 'Email',
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Theme.of(context).primaryColor),
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     TextField(
                       controller: _passwordController,
                       decoration: InputDecoration(
                         labelText: 'Password',
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Theme.of(context).primaryColor),
