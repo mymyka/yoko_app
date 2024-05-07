@@ -3,11 +3,11 @@ import 'package:dio/dio.dart';
 import 'package:yoko_app/core/usecases/usecase.dart';
 import 'package:yoko_app/features/auth/auth.dart';
 
-class LoginUserCase
+class LoginUseCase
     extends UseCase<Either<DioException, AuthUserEntity>, LogInParams> {
   final AuthRepository repository;
 
-  LoginUserCase(this.repository);
+  LoginUseCase(this.repository);
 
   @override
   Future<Either<DioException, AuthUserEntity>> call(LogInParams params) async {

@@ -12,12 +12,12 @@ final class AuthInitial extends AuthState {}
 final class AuthLoading extends AuthState {}
 
 final class AuthSuccess extends AuthState {
-  final AuthUserEntity user;
+  final AuthUserEntity credentials;
 
-  const AuthSuccess(this.user);
+  const AuthSuccess(this.credentials);
 
   @override
-  List<Object> get props => [user];
+  List<Object> get props => [credentials];
 }
 
 final class AuthFailure extends AuthState {

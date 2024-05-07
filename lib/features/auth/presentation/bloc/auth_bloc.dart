@@ -7,7 +7,7 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> with MainBoxMixin {
-  final LoginUserCase loginUserCase;
+  final LoginUseCase loginUserCase;
   final RegisterUseCase registerUseCase;
 
   AuthBloc({
