@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'collection.g.dart';
 
 @JsonSerializable()
-class Collection {
+class CollectionEntity {
   final int id;
   final String name;
   final String status;
@@ -13,7 +13,7 @@ class Collection {
   final int wordsCount;
   final int wordsLearned;
 
-  Collection({
+  CollectionEntity({
     required this.id,
     required this.name,
     required this.status,
@@ -24,8 +24,8 @@ class Collection {
     required this.wordsLearned,
   });
 
-  factory Collection.fromJson(Map<String, dynamic> json) =>
-      _$CollectionFromJson(json);
+  factory CollectionEntity.fromJson(Map<String, dynamic> json) =>
+      _$CollectionEntityFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CollectionToJson(this);
+  Map<String, dynamic> toJson() => _$CollectionEntityToJson(this);
 }

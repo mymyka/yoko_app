@@ -34,7 +34,7 @@ extension TextThemeExtension on TextTheme {
         fontWeight: FontWeight.w300,
       );
 
-  TextStyle? get caption => bodyLarge?.copyWith(
+  TextStyle? get bodyCaption => bodyLarge?.copyWith(
         fontSize: 10,
         fontWeight: FontWeight.w400,
       );
