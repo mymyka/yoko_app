@@ -25,6 +25,19 @@ abstract class HomeCollectionsRemoteDataSource {
     @Query('filterOperator') required String filterOperator,
   });
 
+  @GET('/collections/public')
+  @Header('Content-Type: application/json')
+  Future<HttpResponse<BaseResponse<List<CollectionModel>>>>
+      getPublicCollections({
+    @Query('page') required int page,
+    @Query('pageSize') required int pageSize,
+    @Query('sort') required String sort,
+    @Query('orderBy') required String orderBy,
+    @Query('filterParam') required String filterParam,
+    @Query('filterValue') required String filterValue,
+    @Query('filterOperator') required String filterOperator,
+  });
+
   @GET('/collections/{id}')
   @Header('Content-Type: application/json')
   Future<HttpResponse<BaseResponse<CollectionModel>>> getHomeCollectionById({

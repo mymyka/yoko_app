@@ -11,4 +11,8 @@ abstract class HomeCollectionsRepository {
   Future<Either<DioException, CollectionEntity>> fetchHomeCollectionById({
     required FetchHomeCollectionByIdParams params,
   });
+
+  Future<Either<DioException, List<CollectionEntity>>> fetchPublicCollections({
+    required FetchHomeCollectionsParams params,
+  });
 }

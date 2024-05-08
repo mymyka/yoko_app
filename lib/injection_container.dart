@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:yoko_app/core/interceptors/auth_interceptor.dart';
 import 'package:yoko_app/features/auth/auth.dart';
+import 'package:yoko_app/features/home/domain/usecases/fetch_public_collections.dart';
 import 'package:yoko_app/features/home/home.dart';
 import 'package:yoko_app/features/settings/presentation/bloc/theme_bloc.dart';
 
@@ -59,13 +60,15 @@ Future<void> initializeDependencies() async {
       sl(),
     ),
   );
-  // sl.registerLazySingleton<CollectionPageBloc>(
-  //   () => CollectionPageBloc(
-  //     sl(),
-  //   ),
-  // );
   sl.registerLazySingleton<HomeCollectionsBloc>(
     () => HomeCollectionsBloc(
+      sl(),
+    ),
+  );
+
+  // Store
+  sl.registerLazySingleton<FetchPublicCollectionsUseCase>(
+    () => FetchPublicCollectionsUseCase(
       sl(),
     ),
   );
