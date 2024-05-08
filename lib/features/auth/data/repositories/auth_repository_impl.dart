@@ -47,6 +47,7 @@ class AuthRepositoryImpl extends AuthRepository with MainBoxMixin {
     if (response.response.statusCode == HttpStatus.ok) {
       addData(MainBoxKeys.isLogin, true);
       addData(MainBoxKeys.token, response.data.token);
+      addData(MainBoxKeys.user, response.data.user.toJson());
       return Right(response.data);
     } else {
       return Left(

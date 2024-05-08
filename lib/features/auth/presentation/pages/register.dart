@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yoko_app/features/auth/auth.dart';
-import 'package:yoko_app/features/auth/presentation/pages/welcome.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -22,15 +22,17 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
         title: const Text('Register'),
       ),
-      body: BlocBuilder<AuthBloc, AuthState>(
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is AuthSuccess) {
+            context.go('/home');
+          }
+        },
         builder: (context, state) {
           if (state is AuthLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          }
-          if (state is AuthSuccess) {
-            return const WelcomePage();
           }
           return Padding(
             padding: const EdgeInsets.all(16),
