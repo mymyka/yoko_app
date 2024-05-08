@@ -6,6 +6,7 @@ import 'package:yoko_app/features/home/data/datasources/home_collections_remote_
 import 'package:yoko_app/features/home/data/repositories/home_collections_repository_impl.dart';
 import 'package:yoko_app/features/home/domain/repositories/home_collections_repository.dart';
 import 'package:yoko_app/features/home/domain/usecases/fetch_home_collections.dart';
+import 'package:yoko_app/features/settings/presentation/bloc/theme_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -38,6 +39,12 @@ Future<void> initializeDependencies() async {
       sl(),
     ),
   );
+  sl.registerLazySingleton<AuthBloc>(
+    () => AuthBloc(
+      loginUserCase: sl(),
+      registerUseCase: sl(),
+    )..add(AuthCheckLocal()),
+  );
 
   // Home
   sl.registerLazySingleton<HomeCollectionsRemoteDataSource>(
@@ -54,5 +61,10 @@ Future<void> initializeDependencies() async {
     () => FetchHomeCollectionsUseCase(
       sl(),
     ),
+  );
+
+  // Settings
+  sl.registerLazySingleton<ThemeBloc>(
+    () => ThemeBloc()..add(ThemeLoadFromLocalStorage()),
   );
 }

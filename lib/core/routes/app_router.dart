@@ -7,6 +7,7 @@ import 'package:yoko_app/features/auth/presentation/pages/register.dart';
 import 'package:yoko_app/features/auth/presentation/pages/welcome.dart';
 import 'package:yoko_app/features/general/presentation/shell/shell_wrapper.dart';
 import 'package:yoko_app/features/home/presentation/home_collections/pages/home.dart';
+import 'package:yoko_app/features/settings/presentation/pages/settings.dart';
 
 class AppRouter {
   const AppRouter._();
@@ -64,7 +65,7 @@ class AppRouter {
                 path: "/settings",
                 name: "Settings",
                 builder: (BuildContext context, GoRouterState state) =>
-                    const HomeCollectionsPage(),
+                    const SettingsPage(),
               ),
             ],
           ),
