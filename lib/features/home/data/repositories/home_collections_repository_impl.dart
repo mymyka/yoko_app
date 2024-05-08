@@ -54,4 +54,43 @@ class HomeCollectionRepositoryImpl extends HomeCollectionsRepository {
       );
     }
   }
+
+  @override
+  Future<Either<DioException, CollectionModel>> fetchHomeCollectionById({
+    required FetchHomeCollectionByIdParams params,
+  }) async {
+    try {
+      final result = await remoteDataSource.getHomeCollectionById(
+        id: params.id,
+      );
+
+      if (result.response.statusCode == HttpStatus.ok) {
+        return Right(result.data.data);
+      }
+
+      return Left(
+        DioException(
+          requestOptions: result.response.requestOptions,
+          response: result.response,
+          error: result.response.statusMessage,
+          type: DioExceptionType.badResponse,
+        ),
+      );
+    } on DioException catch (e) {
+      return Left(e);
+    } catch (e) {
+      return Left(
+        DioException(
+          requestOptions: RequestOptions(path: ''),
+          response: Response(
+            requestOptions: RequestOptions(path: ''),
+            statusCode: HttpStatus.internalServerError,
+            statusMessage: 'Internal Server Error',
+          ),
+          error: 'Internal Server Error',
+          type: DioExceptionType.unknown,
+        ),
+      );
+    }
+  }
 }

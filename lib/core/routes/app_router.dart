@@ -6,7 +6,7 @@ import 'package:yoko_app/features/auth/presentation/pages/login.dart';
 import 'package:yoko_app/features/auth/presentation/pages/register.dart';
 import 'package:yoko_app/features/auth/presentation/pages/welcome.dart';
 import 'package:yoko_app/features/general/presentation/shell/shell_wrapper.dart';
-import 'package:yoko_app/features/home/presentation/home_collections/pages/home.dart';
+import 'package:yoko_app/features/home/home.dart';
 import 'package:yoko_app/features/settings/presentation/pages/settings.dart';
 
 class AppRouter {
@@ -53,6 +53,16 @@ class AppRouter {
                 name: "Home",
                 builder: (BuildContext context, GoRouterState state) =>
                     const HomeCollectionsPage(),
+                routes: [
+                  GoRoute(
+                    path: "collection/:id",
+                    name: 'Home Collection Page',
+                    builder: (context, state) {
+                      final id = int.parse(state.pathParameters['id']!);
+                      return CollectionPage(id: id);
+                    },
+                  ),
+                ],
               ),
             ],
           ),

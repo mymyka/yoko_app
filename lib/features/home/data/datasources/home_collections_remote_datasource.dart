@@ -24,4 +24,10 @@ abstract class HomeCollectionsRemoteDataSource {
     @Query('filterValue') required String filterValue,
     @Query('filterOperator') required String filterOperator,
   });
+
+  @GET('/collections/{id}')
+  @Header('Content-Type: application/json')
+  Future<HttpResponse<BaseResponse<CollectionModel>>> getHomeCollectionById({
+    @Path('id') required int id,
+  });
 }

@@ -38,6 +38,7 @@ class CollectionCard extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyCaption,
           ),
         ),
+        onTap: onTap,
       ),
     );
   }
