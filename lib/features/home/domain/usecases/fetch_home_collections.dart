@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:yoko_app/core/usecases/usecase.dart';
-import 'package:yoko_app/features/general/domain/entities/collection.dart';
-import 'package:yoko_app/features/home/domain/entities/fetch_home_collections_params.dart';
-import 'package:yoko_app/features/home/domain/repositories/home_collections_repository.dart';
+import 'package:yoko_app/core/core.dart';
+import 'package:yoko_app/features/general/general.dart';
+import 'package:yoko_app/features/home/home.dart';
 
 class FetchHomeCollectionsUseCase extends UseCase<
     Either<DioException, List<CollectionEntity>>, FetchHomeCollectionsParams> {

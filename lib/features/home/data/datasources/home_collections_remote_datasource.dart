@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/dio.dart';
 import 'package:retrofit/http.dart';
-import 'package:yoko_app/features/general/data/models/collection.dart';
-import 'package:yoko_app/features/general/domain/entities/base_response.dart';
+import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/utils/utils.dart';
 
 part 'home_collections_remote_datasource.g.dart';

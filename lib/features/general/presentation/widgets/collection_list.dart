@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yoko_app/features/general/domain/entities/collection.dart';
-import 'package:yoko_app/features/general/presentation/widgets/collection_card.dart';
+import 'package:yoko_app/features/general/general.dart';
 
 class CollectionList extends StatelessWidget {
   final List<CollectionEntity> collections;

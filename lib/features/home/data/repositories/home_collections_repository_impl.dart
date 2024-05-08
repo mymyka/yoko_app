@@ -2,10 +2,8 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:yoko_app/features/general/data/models/collection.dart';
-import 'package:yoko_app/features/home/data/datasources/home_collections_remote_datasource.dart';
-import 'package:yoko_app/features/home/domain/entities/fetch_home_collections_params.dart';
-import 'package:yoko_app/features/home/domain/repositories/home_collections_repository.dart';
+import 'package:yoko_app/features/general/general.dart';
+import 'package:yoko_app/features/home/home.dart';
 
 class HomeCollectionRepositoryImpl extends HomeCollectionsRepository {
   final HomeCollectionsRemoteDataSource remoteDataSource;

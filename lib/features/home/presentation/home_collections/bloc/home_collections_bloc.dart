@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:yoko_app/features/general/domain/entities/collection.dart';
-import 'package:yoko_app/features/home/domain/entities/fetch_home_collections_params.dart';
-import 'package:yoko_app/features/home/domain/usecases/fetch_home_collections.dart';
+import 'package:yoko_app/features/general/general.dart';
+import 'package:yoko_app/features/home/home.dart';
 
 part 'home_collections_event.dart';
 part 'home_collections_state.dart';

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:yoko_app/core/interseptors/auth_interseptor.dart';
+import 'package:yoko_app/core/interceptors/auth_interceptor.dart';
 import 'package:yoko_app/features/auth/auth.dart';
 import 'package:yoko_app/features/home/data/datasources/home_collections_remote_datasource.dart';
 import 'package:yoko_app/features/home/data/repositories/home_collections_repository_impl.dart';
