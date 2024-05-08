@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:yoko_app/features/auth/auth.dart';
@@ -13,22 +14,39 @@ class AuthRepositoryImpl extends AuthRepository with MainBoxMixin {
   Future<Either<DioException, AuthUserModel>> logInWithEmailAndPassword({
     required LogInParams params,
   }) async {
-    final response = await _remoteDataSource.logInWithEmailAndPassword(
-      email: params.email,
-      password: params.password,
-    );
-    if (response.response.statusCode == HttpStatus.ok) {
-      addData(MainBoxKeys.isLogin, true);
-      addData(MainBoxKeys.token, response.data.token);
-      addData(MainBoxKeys.user, response.data.user.toJson());
-      return Right(response.data);
-    } else {
+    try {
+      final response = await _remoteDataSource.logInWithEmailAndPassword(
+        email: params.email,
+        password: params.password,
+      );
+      if (response.response.statusCode == HttpStatus.ok) {
+        addData(MainBoxKeys.isLogin, true);
+        addData(MainBoxKeys.token, response.data.token);
+        addData(MainBoxKeys.user, response.data.user.toJson());
+        return Right(response.data);
+      } else {
+        return Left(
+          DioException(
+            requestOptions: response.response.requestOptions,
+            response: response.response,
+            error: response.response.statusMessage,
+            type: DioExceptionType.badResponse,
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(e);
+    } catch (e) {
       return Left(
         DioException(
-          requestOptions: response.response.requestOptions,
-          response: response.response,
-          error: response.response.statusMessage,
-          type: DioExceptionType.badResponse,
+          requestOptions: RequestOptions(path: ''),
+          response: Response(
+            requestOptions: RequestOptions(path: ''),
+            statusCode: HttpStatus.internalServerError,
+            statusMessage: 'Internal Server Error',
+          ),
+          error: 'Internal Server Error',
+          type: DioExceptionType.unknown,
         ),
       );
     }
@@ -38,24 +56,41 @@ class AuthRepositoryImpl extends AuthRepository with MainBoxMixin {
   Future<Either<DioException, AuthUserModel>> registerWithEmailAndPassword({
     required RegisterParams params,
   }) async {
-    final response = await _remoteDataSource.registerWithEmailAndPassword(
-      name: params.name,
-      surname: params.surname,
-      email: params.email,
-      password: params.password,
-    );
-    if (response.response.statusCode == HttpStatus.ok) {
-      addData(MainBoxKeys.isLogin, true);
-      addData(MainBoxKeys.token, response.data.token);
-      addData(MainBoxKeys.user, response.data.user.toJson());
-      return Right(response.data);
-    } else {
+    try {
+      final response = await _remoteDataSource.registerWithEmailAndPassword(
+        name: params.name,
+        surname: params.surname,
+        email: params.email,
+        password: params.password,
+      );
+      if (response.response.statusCode == HttpStatus.ok) {
+        addData(MainBoxKeys.isLogin, true);
+        addData(MainBoxKeys.token, response.data.token);
+        addData(MainBoxKeys.user, response.data.user.toJson());
+        return Right(response.data);
+      } else {
+        return Left(
+          DioException(
+            requestOptions: response.response.requestOptions,
+            response: response.response,
+            error: response.response.statusMessage,
+            type: DioExceptionType.badResponse,
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(e);
+    } catch (e) {
       return Left(
         DioException(
-          requestOptions: response.response.requestOptions,
-          response: response.response,
-          error: response.response.statusMessage,
-          type: DioExceptionType.badResponse,
+          requestOptions: RequestOptions(path: ''),
+          response: Response(
+            requestOptions: RequestOptions(path: ''),
+            statusCode: HttpStatus.internalServerError,
+            statusMessage: 'Internal Server Error',
+          ),
+          error: 'Internal Server Error',
+          type: DioExceptionType.unknown,
         ),
       );
     }

@@ -26,6 +26,13 @@ class _LoginPageState extends State<LoginPage> {
           if (state is AuthSuccess) {
             context.go('/home');
           }
+          if (state is AuthFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+              ),
+            );
+          }
         },
         builder: (context, state) {
           if (state is AuthLoading) {

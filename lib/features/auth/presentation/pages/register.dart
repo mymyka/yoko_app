@@ -27,6 +27,13 @@ class _RegisterPageState extends State<RegisterPage> {
           if (state is AuthSuccess) {
             context.go('/home');
           }
+          if (state is AuthFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+              ),
+            );
+          }
         },
         builder: (context, state) {
           if (state is AuthLoading) {
