@@ -15,3 +15,12 @@ class GetCollectionById extends CollectionPageEvent {
   @override
   List<Object> get props => [params];
 }
+
+class AddCollectionToUserEvent extends CollectionPageEvent {
+  final AddCollectionToUserParams params;
+
+  const AddCollectionToUserEvent(this.params);
+
+  @override
+  List<Object> get props => [params];
+}

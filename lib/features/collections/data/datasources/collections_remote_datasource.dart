@@ -43,4 +43,10 @@ abstract class CollectionsRemoteDataSource {
   Future<HttpResponse<BaseResponse<CollectionModel>>> getCollectionById({
     @Path('id') required int id,
   });
+
+  @POST('/users/startCollection/{id}')
+  @Header('Content-Type: application/json')
+  Future<HttpResponse<BaseResponse<CollectionModel>>> addCollectionToUser({
+    @Path('id') required int id,
+  });
 }

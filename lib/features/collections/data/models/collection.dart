@@ -14,7 +14,7 @@ class CollectionModel extends CollectionEntity {
     required super.bannerUrl,
     required super.wordsCount,
     required super.wordsLearned,
-    required super.isStared,
+    required super.isStarted,
   });
 
   factory CollectionModel.fromJson(Map<String, dynamic> json) =>

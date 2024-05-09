@@ -23,6 +23,18 @@ class CollectionPageView extends StatelessWidget {
               children: [
                 Text(state.collection.name),
                 Text(state.collection.id.toString()),
+                Text("Is stared"),
+                Text(state.collection.isStarted.toString()),
+                ElevatedButton(
+                  onPressed: () => {
+                    context.read<CollectionPageBloc>().add(
+                          AddCollectionToUserEvent(
+                            AddCollectionToUserParams(id: state.collection.id),
+                          ),
+                        )
+                  },
+                  child: Text("Add to user"),
+                ),
               ],
             );
           } else if (state is CollectionPageError) {

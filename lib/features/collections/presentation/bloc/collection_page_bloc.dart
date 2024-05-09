@@ -11,6 +11,7 @@ class CollectionPageBloc
 
   CollectionPageBloc(this.repository) : super(CollectionPageInitial()) {
     on<GetCollectionById>(_onFetchHomeCollectionById);
+    on<AddCollectionToUserEvent>(_onAddCollectionToUserEvent);
   }
 
   void _onFetchHomeCollectionById(
@@ -19,6 +20,18 @@ class CollectionPageBloc
   ) async {
     emit(CollectionPageLoading());
     final result = await repository.getHomeCollectionById(params: event.params);
+    result.fold(
+      (error) => emit(CollectionPageError(error.message ?? 'Error')),
+      (collection) => emit(CollectionPageLoaded(collection)),
+    );
+  }
+
+  void _onAddCollectionToUserEvent(
+    AddCollectionToUserEvent event,
+    Emitter<CollectionPageState> emit,
+  ) async {
+    emit(CollectionPageLoading());
+    final result = await repository.addCollectionToUser(params: event.params);
     result.fold(
       (error) => emit(CollectionPageError(error.message ?? 'Error')),
       (collection) => emit(CollectionPageLoaded(collection)),

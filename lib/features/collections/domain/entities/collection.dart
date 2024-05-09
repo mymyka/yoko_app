@@ -12,7 +12,7 @@ class CollectionEntity {
   final String bannerUrl;
   final int wordsCount;
   final int wordsLearned;
-  final bool isStared;
+  final bool isStarted;
 
   CollectionEntity({
     required this.id,
@@ -23,7 +23,7 @@ class CollectionEntity {
     required this.bannerUrl,
     required this.wordsCount,
     required this.wordsLearned,
-    required this.isStared,
+    required this.isStarted,
   });
 
   factory CollectionEntity.fromJson(Map<String, dynamic> json) =>

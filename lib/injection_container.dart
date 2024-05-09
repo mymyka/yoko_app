@@ -74,6 +74,13 @@ Future<void> initializeDependencies() async {
     ),
   );
 
+  // Collections
+  sl.registerLazySingleton<AddCollectionToUserUseCase>(
+    () => AddCollectionToUserUseCase(
+      sl(),
+    ),
+  );
+
   // Settings
   sl.registerLazySingleton<ThemeBloc>(
     () => ThemeBloc()..add(ThemeLoadFromLocalStorage()),
