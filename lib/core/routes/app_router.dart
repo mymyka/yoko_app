@@ -8,7 +8,7 @@ import 'package:yoko_app/features/auth/presentation/pages/welcome.dart';
 import 'package:yoko_app/features/general/presentation/shell/shell_wrapper.dart';
 import 'package:yoko_app/features/home/home.dart';
 import 'package:yoko_app/features/settings/presentation/pages/settings.dart';
-import 'package:yoko_app/features/store/presentation/collection_list/pages/store_collections.dart';
+import 'package:yoko_app/features/store/presentation/pages/store_collections.dart';
 
 class AppRouter {
   const AppRouter._();

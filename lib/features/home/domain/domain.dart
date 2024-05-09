@@ -1,3 +1,3 @@
-export 'entities/entities.dart';
-export 'repositories/repositories.dart';
-export 'usecases/usecases.dart';
+export '../../collections/domain/entities/entities.dart';
+export '../../collections/domain/repositories/repositories.dart';
+export '../../collections/domain/usecases/usecases.dart';
