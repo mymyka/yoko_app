@@ -7,9 +7,12 @@ part 'collection_page_state.dart';
 
 class CollectionPageBloc
     extends Bloc<CollectionPageEvent, CollectionPageState> {
-  final CollectionsRepository repository;
+  final GetCollectionByIdUseCase getCollectionByIdUseCase;
+  final AddCollectionToUserUseCase addCollectionToUserUseCase;
 
-  CollectionPageBloc(this.repository) : super(CollectionPageInitial()) {
+  CollectionPageBloc(
+      this.getCollectionByIdUseCase, this.addCollectionToUserUseCase)
+      : super(CollectionPageInitial()) {
     on<GetCollectionById>(_onFetchHomeCollectionById);
     on<AddCollectionToUserEvent>(_onAddCollectionToUserEvent);
   }
@@ -19,7 +22,7 @@ class CollectionPageBloc
     Emitter<CollectionPageState> emit,
   ) async {
     emit(CollectionPageLoading());
-    final result = await repository.getHomeCollectionById(params: event.params);
+    final result = await getCollectionByIdUseCase(event.params);
     result.fold(
       (error) => emit(CollectionPageError(error.message ?? 'Error')),
       (collection) => emit(CollectionPageLoaded(collection)),
@@ -31,7 +34,7 @@ class CollectionPageBloc
     Emitter<CollectionPageState> emit,
   ) async {
     emit(CollectionPageLoading());
-    final result = await repository.addCollectionToUser(params: event.params);
+    final result = await addCollectionToUserUseCase(event.params);
     result.fold(
       (error) => emit(CollectionPageError(error.message ?? 'Error')),
       (collection) => emit(CollectionPageLoaded(collection)),

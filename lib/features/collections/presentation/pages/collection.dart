@@ -11,7 +11,7 @@ class CollectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CollectionPageBloc>(
-      create: (context) => CollectionPageBloc(sl())
+      create: (context) => CollectionPageBloc(sl(), sl())
         ..add(
           GetCollectionById(
             GetCollectionByIdParams(id: id),

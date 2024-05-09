@@ -80,6 +80,11 @@ Future<void> initializeDependencies() async {
       sl(),
     ),
   );
+  sl.registerLazySingleton<GetCollectionByIdUseCase>(
+    () => GetCollectionByIdUseCase(
+      sl(),
+    ),
+  );
 
   // Settings
   sl.registerLazySingleton<ThemeBloc>(
