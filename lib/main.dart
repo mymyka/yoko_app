@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/core/routes/app_router.dart';
 import 'package:yoko_app/features/auth/auth.dart';
-import 'package:yoko_app/features/settings/presentation/bloc/theme_bloc.dart';
+import 'package:yoko_app/features/settings/settings.dart';
 import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/injection_container.dart';
 import 'package:yoko_app/utils/utils.dart';
 
 void main() async {
   await MainBoxMixin.initHive(
-      'yoko_app_new_new_new_new_new_new_new_new_new_new_new_new_new');
+      'yoko_app_new_new_new_new_new_new_new_new_new_new_new_new_new_new');
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
   await initializeDependencies();

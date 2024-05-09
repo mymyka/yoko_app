@@ -7,10 +7,10 @@ sealed class CollectionPageEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class FetchHomeCollectionById extends CollectionPageEvent {
+class GetCollectionById extends CollectionPageEvent {
   final GetCollectionByIdParams params;
 
-  const FetchHomeCollectionById(this.params);
+  const GetCollectionById(this.params);
 
   @override
   List<Object> get props => [params];

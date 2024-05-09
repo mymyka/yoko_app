@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:yoko_app/features/auth/auth.dart';
-import 'package:yoko_app/utils/services/hive/main_box.dart';
+import 'package:yoko_app/utils/utils.dart';
 
 class AuthRepositoryImpl extends AuthRepository with MainBoxMixin {
   final AuthRemoteDataSource _remoteDataSource;

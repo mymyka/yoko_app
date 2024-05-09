@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:yoko_app/features/general/general.dart';
-import 'package:yoko_app/features/home/home.dart';
+import 'package:yoko_app/features/collections/collections.dart';
 
 abstract class CollectionsRepository {
   Future<Either<DioException, List<CollectionEntity>>> getHomeCollections({

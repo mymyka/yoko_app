@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/home/home.dart';
 import 'package:yoko_app/injection_container.dart';
+import 'package:yoko_app/features/collections/collections.dart';
 
 class HomeCollectionsPage extends StatelessWidget {
   const HomeCollectionsPage({super.key});
@@ -17,11 +18,11 @@ class HomeCollectionsPage extends StatelessWidget {
         create: (context) => HomeCollectionsBloc(
           sl(),
         )..add(
-            const FetchHomeCollections(
+            const GetHomeCollections(
               GetCollectionsParams(page: 0, pageSize: 10),
             ),
           ),
-        child: const HomeCollections(),
+        child: const HomeCollectionsView(),
       ),
     );
   }

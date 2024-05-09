@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:yoko_app/features/auth/auth.dart';
-import 'package:yoko_app/utils/services/hive/main_box.dart';
+import 'package:yoko_app/utils/utils.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

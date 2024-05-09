@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yoko_app/features/home/home.dart';
+import 'package:yoko_app/features/collections/collections.dart';
 import 'package:yoko_app/injection_container.dart';
 
 class CollectionPage extends StatelessWidget {
@@ -13,11 +13,11 @@ class CollectionPage extends StatelessWidget {
     return BlocProvider<CollectionPageBloc>(
       create: (context) => CollectionPageBloc(sl())
         ..add(
-          FetchHomeCollectionById(
+          GetCollectionById(
             GetCollectionByIdParams(id: id),
           ),
         ),
-      child: CollectionPageView(),
+      child: const CollectionPageView(),
     );
   }
 }

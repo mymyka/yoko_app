@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/features/home/home.dart';
+import 'package:yoko_app/features/collections/collections.dart';
 
-class HomeCollections extends StatelessWidget {
-  const HomeCollections({super.key});
+class HomeCollectionsView extends StatelessWidget {
+  const HomeCollectionsView({super.key});
 
   @override
   Widget build(BuildContext context) {

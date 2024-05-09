@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yoko_app/features/auth/auth.dart';
-import 'package:yoko_app/features/auth/presentation/pages/login.dart';
-import 'package:yoko_app/features/auth/presentation/pages/register.dart';
-import 'package:yoko_app/features/auth/presentation/pages/welcome.dart';
-import 'package:yoko_app/features/general/presentation/shell/shell_wrapper.dart';
+import 'package:yoko_app/features/store/store.dart';
 import 'package:yoko_app/features/home/home.dart';
-import 'package:yoko_app/features/settings/presentation/pages/settings.dart';
-import 'package:yoko_app/features/store/presentation/pages/store_collections.dart';
+import 'package:yoko_app/features/settings/settings.dart';
+import 'package:yoko_app/features/collections/collections.dart';
+import 'package:yoko_app/features/general/general.dart';
 
 class AppRouter {
   const AppRouter._();
@@ -40,7 +38,7 @@ class AppRouter {
                 path: "/store",
                 name: "Store",
                 builder: (BuildContext context, GoRouterState state) =>
-                    StoreCollectionsPage(),
+                    const StoreCollectionsPage(),
                 routes: [
                   GoRoute(
                     path: "collection/:id",

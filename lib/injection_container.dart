@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:yoko_app/core/interceptors/auth_interceptor.dart';
+import 'package:yoko_app/core/core.dart';
 import 'package:yoko_app/features/auth/auth.dart';
-import 'package:yoko_app/features/collections/domain/usecases/get_store_collections.dart';
+import 'package:yoko_app/features/store/store.dart';
 import 'package:yoko_app/features/home/home.dart';
-import 'package:yoko_app/features/settings/presentation/bloc/theme_bloc.dart';
+import 'package:yoko_app/features/settings/settings.dart';
+import 'package:yoko_app/features/collections/collections.dart';
 
 final sl = GetIt.instance;
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yoko_app/gen/strings.g.dart';
-import 'package:yoko_app/utils/ext/text.dart';
+import 'package:yoko_app/utils/utils.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});

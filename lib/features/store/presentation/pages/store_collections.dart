@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yoko_app/features/collections/domain/entities/get_collections_params.dart';
-import 'package:yoko_app/features/store/presentation/bloc/collection_list_bloc.dart';
-import 'package:yoko_app/features/store/presentation/views/public_collections.dart';
+import 'package:yoko_app/features/store/store.dart';
+import 'package:yoko_app/features/collections/collections.dart';
 import 'package:yoko_app/injection_container.dart';
 
 class StoreCollectionsPage extends StatelessWidget {
@@ -20,7 +19,7 @@ class StoreCollectionsPage extends StatelessWidget {
             ),
           ),
         ),
-      child: const PublicCollectionsView(),
+      child: const StoreCollectionsView(),
     );
   }
 }

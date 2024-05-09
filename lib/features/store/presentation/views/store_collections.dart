@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yoko_app/features/collections/presentation/widgets/collection_list.dart';
-import 'package:yoko_app/features/store/presentation/bloc/collection_list_bloc.dart';
+import 'package:yoko_app/features/store/store.dart';
+import 'package:yoko_app/features/collections/collections.dart';
 
-class PublicCollectionsView extends StatelessWidget {
-  const PublicCollectionsView({super.key});
+class StoreCollectionsView extends StatelessWidget {
+  const StoreCollectionsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PublicCollectionListBloc, PublicCollectionListState>(
+    return BlocConsumer<PublicCollectionListBloc, StoreCollectionsState>(
       listener: (context, state) {
-        if (state is PublicCollectionListError) {
+        if (state is StoreCollectionsError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.message)),
           );
         }
       },
       builder: (context, state) {
-        if (state is PublicCollectionListLoading) {
+        if (state is StoreCollectionsLoading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is PublicCollectionListLoaded) {
+        } else if (state is StoreCollectionsLoaded) {
           return CollectionList(
             collections: state.collections,
             onTap: (c, collection) =>
                 c.go('/store/collection/${collection.id}'),
           );
-        } else if (state is PublicCollectionListInitial) {
+        } else if (state is StoreCollectionsInitial) {
           return const Center(child: CircularProgressIndicator());
         } else {
           return const Center(child: Text('Error'));

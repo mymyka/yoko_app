@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:yoko_app/core/usecases/usecase.dart';
+import 'package:yoko_app/core/core.dart';
 import 'package:yoko_app/features/auth/auth.dart';
 
 class LoginUseCase

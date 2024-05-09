@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:yoko_app/features/general/general.dart';
+import 'package:yoko_app/features/collections/collections.dart';
 import 'package:yoko_app/utils/ext/text.dart';
 
 class CollectionCard extends StatelessWidget {

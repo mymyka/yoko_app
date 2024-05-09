@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yoko_app/features/home/home.dart';
+import 'package:yoko_app/features/collections/collections.dart';
 
 class CollectionPageView extends StatelessWidget {
   const CollectionPageView({super.key});
@@ -9,23 +9,23 @@ class CollectionPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Collection'),
+        title: const Text('Collection'),
       ),
-      body: BlocConsumer<CollectionPageBloc, HomeCollectionPageState>(
+      body: BlocConsumer<CollectionPageBloc, CollectionPageState>(
         listener: (context, state) => {},
         builder: (context, state) {
-          if (state is HomeCollectionPageLoading) {
+          if (state is CollectionPageLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is HomeCollectionPageLoaded) {
+          } else if (state is CollectionPageLoaded) {
             return Column(
               children: [
                 Text(state.collection.name),
                 Text(state.collection.id.toString()),
               ],
             );
-          } else if (state is HomeCollectionPageError) {
+          } else if (state is CollectionPageError) {
             return Center(
               child: Text(state.message),
             );

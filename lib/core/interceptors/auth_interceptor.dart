@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:yoko_app/utils/services/hive/hive.dart';
+import 'package:yoko_app/utils/utils.dart';
 
 class AuthInterceptor extends Interceptor with MainBoxMixin {
   @override

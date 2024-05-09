@@ -1,4 +1,4 @@
-part of 'collection_list_bloc.dart';
+part of 'store_collections_bloc.dart';
 
 sealed class CollectionListEvent extends Equatable {
   const CollectionListEvent();

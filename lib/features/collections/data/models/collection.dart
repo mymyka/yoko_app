@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:yoko_app/features/general/general.dart';
+import 'package:yoko_app/features/collections/collections.dart';
 
 part 'collection.g.dart';
 
