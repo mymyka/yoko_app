@@ -15,7 +15,7 @@ class ShellWrapper extends StatefulWidget {
 }
 
 class _ShellWrapperState extends State<ShellWrapper> {
-  int selectedIndex = 0;
+  int selectedIndex = 1;
 
   void _goBranch(int index) {
     widget.navigationShell.goBranch(
