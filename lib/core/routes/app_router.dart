@@ -41,6 +41,16 @@ class AppRouter {
                 name: "Store",
                 builder: (BuildContext context, GoRouterState state) =>
                     StoreCollectionsPage(),
+                routes: [
+                  GoRoute(
+                    path: "collection/:id",
+                    name: 'Store Collection Page',
+                    builder: (context, state) {
+                      final id = int.parse(state.pathParameters['id']!);
+                      return CollectionPage(id: id);
+                    },
+                  ),
+                ],
               ),
             ],
           ),

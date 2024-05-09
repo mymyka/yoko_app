@@ -23,7 +23,8 @@ class PublicCollectionsView extends StatelessWidget {
         } else if (state is PublicCollectionListLoaded) {
           return CollectionList(
             collections: state.collections,
-            onTap: (c, collection) => c.go('/home/collection/${collection.id}'),
+            onTap: (c, collection) =>
+                c.go('/store/collection/${collection.id}'),
           );
         } else if (state is PublicCollectionListInitial) {
           return const Center(child: CircularProgressIndicator());
