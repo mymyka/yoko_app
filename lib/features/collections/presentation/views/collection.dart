@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yoko_app/features/collections/collections.dart';
 
 class CollectionPageView extends StatelessWidget {
-  const CollectionPageView({super.key});
+  final int collectionId;
+
+  const CollectionPageView({super.key, required this.collectionId});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +28,10 @@ class CollectionPageView extends StatelessWidget {
                 Text(state.collection.id.toString()),
                 Text("Is stared"),
                 Text(state.collection.isStarted.toString()),
+                ElevatedButton(
+                  onPressed: () => context.go('/study/$collectionId'),
+                  child: Text("Start Study"),
+                ),
                 ElevatedButton(
                   onPressed: () => {
                     context.read<CollectionPageBloc>().add(

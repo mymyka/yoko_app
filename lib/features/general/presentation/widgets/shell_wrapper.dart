@@ -15,13 +15,19 @@ class ShellWrapper extends StatefulWidget {
 }
 
 class _ShellWrapperState extends State<ShellWrapper> {
-  int selectedIndex = 1;
+  late int selectedIndex;
 
   void _goBranch(int index) {
     widget.navigationShell.goBranch(
       index,
       initialLocation: index == widget.navigationShell.currentIndex,
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.navigationShell.currentIndex;
   }
 
   @override

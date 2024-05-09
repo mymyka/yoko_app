@@ -17,7 +17,7 @@ class CollectionPage extends StatelessWidget {
             GetCollectionByIdParams(id: id),
           ),
         ),
-      child: const CollectionPageView(),
+      child: CollectionPageView(collectionId: id),
     );
   }
 }

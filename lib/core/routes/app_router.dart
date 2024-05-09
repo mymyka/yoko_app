@@ -7,6 +7,7 @@ import 'package:yoko_app/features/home/home.dart';
 import 'package:yoko_app/features/settings/settings.dart';
 import 'package:yoko_app/features/collections/collections.dart';
 import 'package:yoko_app/features/general/general.dart';
+import 'package:yoko_app/features/study/study.dart';
 
 class AppRouter {
   const AppRouter._();
@@ -89,6 +90,14 @@ class AppRouter {
             ],
           ),
         ],
+      ),
+      GoRoute(
+        path: '/study/:id',
+        name: 'Study Options Page',
+        builder: (context, state) {
+          final collectionId = state.pathParameters['id']!;
+          return StudyOptionsPage(collectionId: collectionId);
+        },
       ),
       GoRoute(
         path: '/authGuard',
