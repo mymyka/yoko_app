@@ -95,9 +95,19 @@ class AppRouter {
         path: '/study/:id',
         name: 'Study Options Page',
         builder: (context, state) {
-          final collectionId = state.pathParameters['id']!;
+          final collectionId = int.parse(state.pathParameters['id']!);
           return StudyOptionsPage(collectionId: collectionId);
         },
+        routes: [
+          GoRoute(
+            path: 'quiz',
+            name: 'Quiz Page',
+            builder: (context, state) {
+              final collectionId = int.parse(state.pathParameters['id']!);
+              return QuizPage(collectionId: collectionId);
+            },
+          ),
+        ],
       ),
       GoRoute(
         path: '/authGuard',

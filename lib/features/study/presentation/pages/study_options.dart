@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class StudyOptionsPage extends StatelessWidget {
-  final String collectionId;
+  final int collectionId;
 
   const StudyOptionsPage({
     super.key,
@@ -30,11 +30,7 @@ class StudyOptionsPage extends StatelessWidget {
               child: ListTile(
                 title: Text('Quiz'),
                 onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    'home/study/quiz/$collectionId',
-                    arguments: collectionId,
-                  );
+                  context.go('/study/$collectionId/quiz');
                 },
               ),
             ),

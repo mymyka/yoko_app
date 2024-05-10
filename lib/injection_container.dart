@@ -6,6 +6,7 @@ import 'package:yoko_app/features/store/store.dart';
 import 'package:yoko_app/features/home/home.dart';
 import 'package:yoko_app/features/settings/settings.dart';
 import 'package:yoko_app/features/collections/collections.dart';
+import 'package:yoko_app/features/study/study.dart';
 
 final sl = GetIt.instance;
 
@@ -82,6 +83,25 @@ Future<void> initializeDependencies() async {
   );
   sl.registerLazySingleton<GetCollectionByIdUseCase>(
     () => GetCollectionByIdUseCase(
+      sl(),
+    ),
+  );
+
+  // Study
+
+  // Quiz
+  sl.registerLazySingleton<QuizRemoteDataSource>(
+    () => QuizRemoteDataSource(
+      sl(),
+    ),
+  );
+  sl.registerLazySingleton<QuizRepository>(
+    () => QuizRepositoryImpl(
+      sl(),
+    ),
+  );
+  sl.registerLazySingleton<GetQuizQuestionsUseCase>(
+    () => GetQuizQuestionsUseCase(
       sl(),
     ),
   );

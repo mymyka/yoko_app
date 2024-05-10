@@ -4,7 +4,9 @@ import 'package:yoko_app/core/core.dart';
 import 'package:yoko_app/features/collections/collections.dart';
 
 class AddCollectionToUserUseCase
-    implements UseCase<void, AddCollectionToUserParams> {
+    implements
+        UseCase<Either<DioException, CollectionEntity>,
+            AddCollectionToUserParams> {
   final CollectionsRepository collectionRepository;
 
   AddCollectionToUserUseCase(this.collectionRepository);
