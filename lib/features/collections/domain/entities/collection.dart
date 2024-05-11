@@ -7,7 +7,6 @@ class CollectionEntity {
   final int id;
   final String name;
   final String status;
-  final int textId;
   final String posterUrl;
   final String bannerUrl;
   final int wordsCount;
@@ -18,7 +17,6 @@ class CollectionEntity {
     required this.id,
     required this.name,
     required this.status,
-    required this.textId,
     required this.posterUrl,
     required this.bannerUrl,
     required this.wordsCount,

@@ -9,7 +9,6 @@ class CollectionModel extends CollectionEntity {
     required super.id,
     required super.name,
     required super.status,
-    required super.textId,
     required super.posterUrl,
     required super.bannerUrl,
     required super.wordsCount,
