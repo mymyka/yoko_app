@@ -72,6 +72,11 @@ class AppRouter {
                       return CollectionPage(id: id);
                     },
                   ),
+                  GoRoute(
+                    path: 'collection/create/page',
+                    name: 'Create Collection Page',
+                    builder: (context, state) => const CreateCollectionPage(),
+                  )
                 ],
               ),
             ],

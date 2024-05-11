@@ -86,6 +86,11 @@ Future<void> initializeDependencies() async {
       sl(),
     ),
   );
+  sl.registerLazySingleton<CreateCollectionUseCase>(
+    () => CreateCollectionUseCase(
+      sl(),
+    ),
+  );
 
   // Study
 

@@ -9,23 +9,35 @@ class HomeCollectionsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCollectionsBloc, HomeCollectionsState>(
-      builder: (context, state) {
-        if (state is HomeCollectionsLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (state is HomeCollectionsLoaded) {
-          return CollectionList(
-            collections: state.pageCollections.data,
-            onTap: (c, collection) => c.go('/home/collection/${collection.id}'),
-          );
-        } else {
-          return const Center(
-            child: Text('Error A'),
-          );
-        }
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Collections'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () => context.go('/home/collection/create/page'),
+          ),
+        ],
+      ),
+      body: BlocBuilder<HomeCollectionsBloc, HomeCollectionsState>(
+        builder: (context, state) {
+          if (state is HomeCollectionsLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is HomeCollectionsLoaded) {
+            return CollectionList(
+              collections: state.pageCollections.data,
+              onTap: (c, collection) =>
+                  c.go('/home/collection/${collection.id}'),
+            );
+          } else {
+            return const Center(
+              child: Text('Error A'),
+            );
+          }
+        },
+      ),
     );
   }
 }

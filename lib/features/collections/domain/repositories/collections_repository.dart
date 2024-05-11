@@ -25,4 +25,8 @@ abstract class CollectionsRepository {
   Future<Either<DioException, CollectionEntity>> addCollectionToUser({
     required AddCollectionToUserParams params,
   });
+
+  Future<Either<DioException, CollectionEntity>> createCollection({
+    required CreateCollectionParams params,
+  });
 }

@@ -47,6 +47,7 @@ class App extends StatelessWidget {
     return BlocBuilder<ThemeBloc, ThemeMode>(
       builder: (context, state) {
         return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
           routerConfig: AppRouter.router,
           title: 'Flutter Demo',
           theme: materialTheme.light(),

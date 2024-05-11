@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:retrofit/dio.dart';
 import 'package:retrofit/http.dart';
@@ -53,5 +55,18 @@ abstract class CollectionsRemoteDataSource {
   @Header('Content-Type: application/json')
   Future<HttpResponse<BaseResponse<CollectionModel>>> addCollectionToUser({
     @Path('id') required int id,
+  });
+
+  @POST('/collections')
+  @MultiPart()
+  @Header('Content-Type: application/json')
+  Future<HttpResponse<BaseResponse<CollectionModel>>> createCollection({
+    @Part() required String name,
+    @Part() required String text,
+    @Part() required String status,
+    @Part() required String color,
+    @Part() required File banner,
+    @Part() required File poster,
+    @SendProgress() required ProgressCallback? onSendProgress,
   });
 }
