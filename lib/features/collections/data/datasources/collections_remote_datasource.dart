@@ -15,7 +15,10 @@ abstract class CollectionsRemoteDataSource {
 
   @GET('/users/collections')
   @Header('Content-Type: application/json')
-  Future<HttpResponse<BaseResponse<List<CollectionModel>>>> getHomeCollections({
+  Future<
+          HttpResponse<
+              BaseResponse<PaginatableResponseEntity<List<CollectionModel>>>>>
+      getHomeCollections({
     @Query('page') required int page,
     @Query('pageSize') required int pageSize,
     @Query('sort') required String sort,
@@ -27,7 +30,9 @@ abstract class CollectionsRemoteDataSource {
 
   @GET('/collections/public')
   @Header('Content-Type: application/json')
-  Future<HttpResponse<BaseResponse<List<CollectionModel>>>>
+  Future<
+          HttpResponse<
+              BaseResponse<PaginatableResponseEntity<List<CollectionModel>>>>>
       getStoreCollections({
     @Query('page') required int page,
     @Query('pageSize') required int pageSize,

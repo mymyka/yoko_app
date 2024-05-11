@@ -22,7 +22,7 @@ class StoreCollectionsView extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else if (state is StoreCollectionsLoaded) {
           return CollectionList(
-            collections: state.collections,
+            collections: state.pageCollections.data,
             onTap: (c, collection) =>
                 c.go('/store/collection/${collection.id}'),
           );

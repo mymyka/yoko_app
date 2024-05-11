@@ -9,7 +9,7 @@ import 'package:yoko_app/utils/utils.dart';
 
 void main() async {
   await MainBoxMixin.initHive(
-      'yoko_app_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new');
+      'yoko_app_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new');
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
   await initializeDependencies();

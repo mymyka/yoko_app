@@ -12,12 +12,12 @@ final class StoreCollectionsInitial extends StoreCollectionsState {}
 final class StoreCollectionsLoading extends StoreCollectionsState {}
 
 final class StoreCollectionsLoaded extends StoreCollectionsState {
-  final List<CollectionEntity> collections;
+  final PaginatableResponseEntity<List<CollectionEntity>> pageCollections;
 
-  const StoreCollectionsLoaded(this.collections);
+  const StoreCollectionsLoaded(this.pageCollections);
 
   @override
-  List<Object> get props => [collections];
+  List<Object> get props => [pageCollections];
 }
 
 final class StoreCollectionsError extends StoreCollectionsState {

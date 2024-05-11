@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:yoko_app/features/general/domain/entities/paginatable_response.dart';
 import 'package:yoko_app/features/store/store.dart';
 import 'package:yoko_app/features/collections/collections.dart';
 

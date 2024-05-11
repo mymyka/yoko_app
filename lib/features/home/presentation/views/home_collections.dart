@@ -17,7 +17,7 @@ class HomeCollectionsView extends StatelessWidget {
           );
         } else if (state is HomeCollectionsLoaded) {
           return CollectionList(
-            collections: state.collections,
+            collections: state.pageCollections.data,
             onTap: (c, collection) => c.go('/home/collection/${collection.id}'),
           );
         } else {

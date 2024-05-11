@@ -12,12 +12,12 @@ final class HomeCollectionsInitial extends HomeCollectionsState {}
 final class HomeCollectionsLoading extends HomeCollectionsState {}
 
 final class HomeCollectionsLoaded extends HomeCollectionsState {
-  final List<CollectionEntity> collections;
+  final PaginatableResponseEntity<List<CollectionEntity>> pageCollections;
 
-  const HomeCollectionsLoaded(this.collections);
+  const HomeCollectionsLoaded(this.pageCollections);
 
   @override
-  List<Object> get props => [collections];
+  List<Object> get props => [pageCollections];
 }
 
 final class HomeCollectionsError extends HomeCollectionsState {

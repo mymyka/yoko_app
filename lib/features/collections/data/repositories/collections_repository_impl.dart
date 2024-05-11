@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:yoko_app/features/collections/collections.dart';
+import 'package:yoko_app/features/general/domain/entities/paginatable_response.dart';
 
 class CollectionRepositoryImpl extends CollectionsRepository {
   final CollectionsRemoteDataSource remoteDataSource;
@@ -10,7 +11,8 @@ class CollectionRepositoryImpl extends CollectionsRepository {
   CollectionRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<Either<DioException, List<CollectionModel>>> getHomeCollections({
+  Future<Either<DioException, PaginatableResponseEntity<List<CollectionModel>>>>
+      getHomeCollections({
     required GetCollectionsParams params,
   }) async {
     try {
@@ -94,7 +96,8 @@ class CollectionRepositoryImpl extends CollectionsRepository {
   }
 
   @override
-  Future<Either<DioException, List<CollectionModel>>> getStoreCollections({
+  Future<Either<DioException, PaginatableResponseEntity<List<CollectionModel>>>>
+      getStoreCollections({
     required GetCollectionsParams params,
   }) async {
     try {

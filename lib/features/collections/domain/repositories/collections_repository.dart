@@ -1,9 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:yoko_app/features/collections/collections.dart';
+import 'package:yoko_app/features/general/general.dart';
 
 abstract class CollectionsRepository {
-  Future<Either<DioException, List<CollectionEntity>>> getHomeCollections({
+  Future<
+          Either<DioException,
+              PaginatableResponseEntity<List<CollectionEntity>>>>
+      getHomeCollections({
     required GetCollectionsParams params,
   });
 
@@ -11,7 +15,10 @@ abstract class CollectionsRepository {
     required GetCollectionByIdParams params,
   });
 
-  Future<Either<DioException, List<CollectionEntity>>> getStoreCollections({
+  Future<
+          Either<DioException,
+              PaginatableResponseEntity<List<CollectionEntity>>>>
+      getStoreCollections({
     required GetCollectionsParams params,
   });
 
