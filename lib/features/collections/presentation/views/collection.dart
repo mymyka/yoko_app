@@ -26,11 +26,11 @@ class CollectionPageView extends StatelessWidget {
               children: [
                 Text(state.collection.name),
                 Text(state.collection.id.toString()),
-                Text("Is stared"),
+                const Text("Is stared"),
                 Text(state.collection.isStarted.toString()),
                 ElevatedButton(
                   onPressed: () => context.go('/study/$collectionId'),
-                  child: Text("Start Study"),
+                  child: const Text("Start Study"),
                 ),
                 ElevatedButton(
                   onPressed: () => {
@@ -40,7 +40,7 @@ class CollectionPageView extends StatelessWidget {
                           ),
                         )
                   },
-                  child: Text("Add to user"),
+                  child: const Text("Add to user"),
                 ),
               ],
             );

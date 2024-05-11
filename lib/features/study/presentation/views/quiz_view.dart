@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yoko_app/features/study/presentation/views/quiz_question.dart';
-import 'package:yoko_app/features/study/presentation/views/quiz_score.dart';
 import 'package:yoko_app/features/study/study.dart';
 
 class QuizView extends StatefulWidget {
@@ -49,7 +47,7 @@ class _QuizViewState extends State<QuizView> {
                         onRightAnswer: incrementScore,
                       ),
                     )
-                    .toList(),
+                    ,
                 QuizScoreView(score: score),
               ],
             ),

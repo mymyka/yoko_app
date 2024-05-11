@@ -23,7 +23,7 @@ class QuizPage extends StatelessWidget {
             ),
           );
       },
-      child: QuizView(),
+      child: const QuizView(),
     );
   }
 }

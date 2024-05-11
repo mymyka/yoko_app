@@ -13,10 +13,10 @@ class StudyOptionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Study Options'),
+        title: const Text('Study Options'),
         actions: [
           IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               context.go('/home/collection/$collectionId');
             },
@@ -28,7 +28,7 @@ class StudyOptionsPage extends StatelessWidget {
           children: [
             Card(
               child: ListTile(
-                title: Text('Quiz'),
+                title: const Text('Quiz'),
                 onTap: () {
                   context.go('/study/$collectionId/quiz');
                 },

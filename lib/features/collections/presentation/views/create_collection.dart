@@ -4,7 +4,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/collections/collections.dart';
-import 'package:yoko_app/features/collections/presentation/bloc/bloc.dart';
 
 class CreateCollectionView extends StatefulWidget {
   const CreateCollectionView({super.key});
@@ -181,7 +180,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                             )),
                           )
                     },
-                child: Text('Create Collection')),
+                child: const Text('Create Collection')),
           ],
         );
       },

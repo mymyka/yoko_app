@@ -32,7 +32,7 @@ class QuizQuestionView extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: onRightAnswer,
-              child: Text('Right Answear'),
+              child: const Text('Right Answear'),
             ),
           ],
         ),
