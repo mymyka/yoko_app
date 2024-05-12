@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:yoko_app/features/auth/auth.dart';
+import 'package:yoko_app/features/auth/presentation/presentation.dart';
 import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/utils/utils.dart';
@@ -50,7 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
         builder: (context, state) {
           if (state is AuthLoading) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: Spinner(),
             );
           }
           return Padding(
@@ -132,10 +133,12 @@ class _RegisterPageState extends State<RegisterPage> {
                             text: t.auth.register.button,
                             onTap: () {
                               context.read<AuthBloc>().add(
-                                    AuthLogin(
-                                      params: LogInParams(
+                                    AuthRegister(
+                                      params: RegisterParams(
                                         email: _emailController.text,
                                         password: _passwordController.text,
+                                        name: _nameController.text,
+                                        surname: _surnameController.text,
                                       ),
                                     ),
                                   );
