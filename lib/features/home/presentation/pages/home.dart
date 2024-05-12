@@ -19,7 +19,7 @@ class HomeCollectionsPage extends StatelessWidget {
           sl(),
         )..add(
             const GetHomeCollections(
-              GetCollectionsParams(page: 2, pageSize: 10),
+              GetCollectionsParams(page: 1, pageSize: 10),
             ),
           ),
         child: const HomeCollectionsView(),
