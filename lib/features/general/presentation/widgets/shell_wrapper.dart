@@ -43,7 +43,7 @@ class _ShellWrapperState extends State<ShellWrapper> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: GNav(
-            tabBackgroundColor: Theme.of(context).colorScheme.surface,
+            tabBackgroundColor: Colors.transparent,
             gap: 8,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             padding: const EdgeInsets.all(16),
