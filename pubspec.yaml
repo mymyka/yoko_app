@@ -52,6 +52,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   percent_indicator: ^4.2.3
   file_picker: ^8.0.3
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -94,17 +95,31 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Serif
+      fonts:
+        - asset: assets/fonts/KyivTypeTitling-Light3.ttf
+          weight: 100
+        - asset: assets/fonts/KyivTypeTitling-Regular3.ttf
+          weight: 400
+        - asset: assets/fonts/KyivTypeTitling-Medium3.ttf
+          weight: 500
+        - asset: assets/fonts/KyivTypeTitling-Bold3.ttf
+          weight: 700
+        - asset: assets/fonts/KyivTypeTitling-Heavy3.ttf
+          weight: 800
+        - asset: assets/fonts/KyivTypeTitling-Black3.ttf
+          weight: 900
+
+
+
+        # - asset: assets/fonts/Schyler-Italic.ttf
+        #   style: italic
+    # - family: Trajan Pro
+    #   fonts:
+    #     - asset: assets/fonts/TrajanPro.ttf
+    #     - asset: assets/fonts/TrajanPro_Bold.ttf
+    #       weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -38,7 +38,8 @@ class WelcomePage extends StatelessWidget {
                     onPressed: () {
                       context.go('/register');
                     },
-                    child: Text(t.auth.register.button),
+                    child: Text(t.auth.register.button,
+                        style: Theme.of(context).textTheme.body),
                   ),
                   const SizedBox(height: 10.0),
                   OutlinedButton(
