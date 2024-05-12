@@ -9,7 +9,7 @@ import 'package:yoko_app/utils/utils.dart';
 
 void main() async {
   await MainBoxMixin.initHive(
-      'yoko_app_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new');
+      'yoko_app_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new_new');
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
   await initializeDependencies();
@@ -53,7 +53,9 @@ class App extends StatelessWidget {
             title: 'Flutter Demo',
             theme: materialTheme.light(),
             darkTheme: materialTheme.dark(),
-            themeMode: state,
+            // themeMode: state,
+            themeMode: ThemeMode.light,
+            // themeMode: ThemeMode.system,
           ),
         );
       },
