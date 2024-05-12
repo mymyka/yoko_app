@@ -1,1 +1,1 @@
-export 'widgets/shell_wrapper.dart';
+export 'widgets/widgets.dart';
