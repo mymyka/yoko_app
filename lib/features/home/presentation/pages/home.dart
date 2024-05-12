@@ -9,21 +9,15 @@ class HomeCollectionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeCollections'),
-        centerTitle: true,
-      ),
-      body: BlocProvider<HomeCollectionsBloc>(
-        create: (context) => HomeCollectionsBloc(
-          sl(),
-        )..add(
-            const GetHomeCollections(
-              GetCollectionsParams(page: 1, pageSize: 10),
-            ),
+    return BlocProvider<HomeCollectionsBloc>(
+      create: (context) => HomeCollectionsBloc(
+        sl(),
+      )..add(
+          const GetHomeCollections(
+            GetCollectionsParams(page: 1, pageSize: 10),
           ),
-        child: const HomeCollectionsView(),
-      ),
+        ),
+      child: const HomeCollectionsView(),
     );
   }
 }
