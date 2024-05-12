@@ -121,7 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           SizedBox(height: 16),
                           Button.primary(
-                            text: t.auth.login.button,
+                            text: t.auth.register.button,
                             onTap: () {
                               context.read<AuthBloc>().add(
                                     AuthLogin(
