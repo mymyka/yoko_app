@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/settings/presentation/bloc/theme_bloc.dart';
+import 'package:yoko_app/gen/strings.g.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -29,25 +30,51 @@ class NewWidget extends StatelessWidget {
         Center(
           child: BlocBuilder<ThemeBloc, ThemeMode>(
             builder: (context, state) {
-              return DropdownButton(
-                hint: Text('Theme: ${state.name}'),
-                items: const [
-                  DropdownMenuItem(
-                    value: ThemeMode.system,
-                    child: Text('System Theme'),
+              return Column(
+                children: [
+                  DropdownButton(
+                    hint: Text('Theme: ${state.name}'),
+                    items: const [
+                      DropdownMenuItem(
+                        value: ThemeMode.system,
+                        child: Text('System Theme'),
+                      ),
+                      DropdownMenuItem(
+                        value: ThemeMode.light,
+                        child: Text('Light Theme'),
+                      ),
+                      DropdownMenuItem(
+                        value: ThemeMode.dark,
+                        child: Text('Dark Theme'),
+                      ),
+                    ],
+                    onChanged: (ThemeMode? value) {
+                      context.read<ThemeBloc>().add(ThemeChanged(value!));
+                    },
                   ),
-                  DropdownMenuItem(
-                    value: ThemeMode.light,
-                    child: Text('Light Theme'),
+                  Text(t.auth.welcome.heading),
+                  Switch(
+                    value:
+                        TranslationProvider.of(context).locale == AppLocale.ua,
+                    onChanged: (languageSwitched) {
+                      final newLocale =
+                          languageSwitched ? AppLocale.ua : AppLocale.en;
+                      LocaleSettings.setLocale(newLocale);
+                    },
                   ),
-                  DropdownMenuItem(
-                    value: ThemeMode.dark,
-                    child: Text('Dark Theme'),
+                  ElevatedButton(
+                    onPressed: () {
+                      LocaleSettings.setLocale(AppLocale.ua);
+                    },
+                    child: Text('Ukrainian'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      LocaleSettings.setLocale(AppLocale.en);
+                    },
+                    child: Text('English'),
                   ),
                 ],
-                onChanged: (ThemeMode? value) {
-                  context.read<ThemeBloc>().add(ThemeChanged(value!));
-                },
               );
             },
           ),

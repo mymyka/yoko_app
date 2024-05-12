@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "welcome": {
+      "heading": "Добрий день! ",
+      "subheading": "Please sign in to continue"
+    },
+    "login": {
+      "heading": "Log in",
+      "button": "Log in"
+    },
+    "register": {
+      "heading": "Register",
+      "button": "Register"
+    }
+  }
+}

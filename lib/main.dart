@@ -46,13 +46,15 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeMode>(
       builder: (context, state) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          routerConfig: AppRouter.router,
-          title: 'Flutter Demo',
-          theme: materialTheme.light(),
-          darkTheme: materialTheme.dark(),
-          themeMode: state,
+        return TranslationProvider(
+          child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            routerConfig: AppRouter.router,
+            title: 'Flutter Demo',
+            theme: materialTheme.light(),
+            darkTheme: materialTheme.dark(),
+            themeMode: state,
+          ),
         );
       },
     );
