@@ -22,7 +22,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
       // actions: <Widget>[Container()],
       surfaceTintColor: Colors.transparent,
       flexibleSpace: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

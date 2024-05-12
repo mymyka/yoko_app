@@ -7,7 +7,7 @@ class Spinner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SpinKitDoubleBounce(
-      color: Theme.of(context).primaryColor,
+      color: Theme.of(context).colorScheme.primary,
       size: 50.0,
     );
   }

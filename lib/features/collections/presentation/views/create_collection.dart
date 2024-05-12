@@ -1,9 +1,13 @@
 import 'dart:io';
 
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/collections/collections.dart';
+import 'package:yoko_app/features/general/general.dart';
 
 class CreateCollectionView extends StatefulWidget {
   const CreateCollectionView({super.key});
@@ -36,8 +40,13 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
         if (state is CreateCollectionPageSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(
-                'Collection ${state.collection.name} created successfully',
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              content: AwesomeSnackbarContent(
+                title: 'Collection created',
+                message: 'Collection has been created successfully',
+                contentType: ContentType.success,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
           );
@@ -53,7 +62,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
       builder: (context, state) {
         if (state is CreateCollectionPageLoading) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: Spinner(),
           );
         }
         if (state is CreateCollectionPageFailure) {
@@ -61,126 +70,181 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
             child: Text('Failed to create collection'),
           );
         }
-        return Column(
-          children: [
-            _posterFile != null
-                ? Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: FileImage(_posterFile!),
-                        fit: BoxFit.cover,
-                      ),
+        return CustomScrollView(
+          scrollDirection: Axis.vertical,
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: [
+                  _bannerFile != null
+                      ? Container(
+                          height: 200,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: FileImage(_bannerFile!),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          height: 200,
+                          color: Theme.of(context).colorScheme.primary,
+                          child: Center(
+                            child: IconButton(
+                              onPressed: () async {
+                                FilePickerResult? result =
+                                    await FilePicker.platform.pickFiles();
+                                if (result != null) {
+                                  setState(() {
+                                    _bannerFile =
+                                        File(result.files.single.path!);
+                                  });
+                                }
+                              },
+                              icon: const Icon(Icons.add),
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                          ),
+                        ),
+                  SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: TextField(
+                                controller: _nameController,
+                                decoration: InputDecoration(
+                                  labelText: 'Name',
+                                  border: const OutlineInputBorder(),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            _posterFile != null
+                                ? Container(
+                                    height: 100,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: FileImage(_posterFile!),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    height: 100,
+                                    width: 100,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    child: Center(
+                                      child: IconButton(
+                                        onPressed: () async {
+                                          FilePickerResult? result =
+                                              await FilePicker.platform
+                                                  .pickFiles();
+                                          if (result != null) {
+                                            setState(() {
+                                              _posterFile = File(
+                                                  result.files.single.path!);
+                                            });
+                                          }
+                                        },
+                                        icon: const Icon(Icons.add),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary,
+                                      ),
+                                    ),
+                                  ),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            DropdownButton(
+                              hint: Text(status),
+                              items: const [
+                                DropdownMenuItem(
+                                  value: 'public',
+                                  child: Text('Public'),
+                                ),
+                                DropdownMenuItem(
+                                  value: 'private',
+                                  child: Text('Private'),
+                                ),
+                              ],
+                              onChanged: (v) => {
+                                setState(() {
+                                  status = v ?? 'public';
+                                })
+                              },
+                            ),
+                            SizedBox(width: 16),
+                            DropdownButton(
+                              hint: Text(color),
+                              items: const [
+                                DropdownMenuItem(
+                                  value: '#9fc5e8',
+                                  child: Text('Blue'),
+                                ),
+                                DropdownMenuItem(
+                                  value: '#FF0000',
+                                  child: Text('Red'),
+                                ),
+                              ],
+                              onChanged: (v) => {
+                                setState(() {
+                                  color = v ?? 'blue';
+                                })
+                              },
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        TextField(
+                          controller: _textEditingController,
+                          decoration: InputDecoration(
+                            labelText: 'Text',
+                            border: const OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Button.primary(
+                          text: 'Create Collection',
+                          onTap: () {
+                            context.read<CreateCollectionPageBloc>().add(
+                                  CreateCollectionPageCreateCollectionEvent(
+                                      CreateCollectionParams(
+                                    name: _nameController.text,
+                                    text: _textEditingController.text,
+                                    status: status,
+                                    color: color,
+                                    poster: _posterFile!,
+                                    banner: _bannerFile!,
+                                  )),
+                                );
+                          },
+                        ),
+                      ],
                     ),
-                  )
-                : ElevatedButton(
-                    onPressed: () async {
-                      FilePickerResult? result =
-                          await FilePicker.platform.pickFiles();
-                      if (result != null) {
-                        setState(() {
-                          _posterFile = File(result.files.single.path!);
-                        });
-                      }
-                    },
-                    child: const Text('Pick Poster'),
                   ),
-            _bannerFile != null
-                ? Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: FileImage(_bannerFile!),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  )
-                : ElevatedButton(
-                    onPressed: () async {
-                      FilePickerResult? result =
-                          await FilePicker.platform.pickFiles();
-                      if (result != null) {
-                        setState(() {
-                          _bannerFile = File(result.files.single.path!);
-                        });
-                      }
-                    },
-                    child: const Text('Pick Banner'),
-                  ),
-            const Text('Create Collection'),
-            TextField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                labelText: 'Name',
-                border: const OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                ),
+                ],
               ),
             ),
-            TextField(
-              controller: _textEditingController,
-              decoration: InputDecoration(
-                labelText: 'Text',
-                border: const OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                ),
-              ),
-            ),
-            DropdownButton(
-              hint: Text(status),
-              items: const [
-                DropdownMenuItem(
-                  value: 'public',
-                  child: Text('Public'),
-                ),
-                DropdownMenuItem(
-                  value: 'private',
-                  child: Text('Private'),
-                ),
-              ],
-              onChanged: (v) => {
-                setState(() {
-                  status = v ?? 'public';
-                })
-              },
-            ),
-            DropdownButton(
-              hint: Text(color),
-              items: const [
-                DropdownMenuItem(
-                  value: '#9fc5e8',
-                  child: Text('Blue'),
-                ),
-                DropdownMenuItem(
-                  value: '#FF0000',
-                  child: Text('Red'),
-                ),
-              ],
-              onChanged: (v) => {
-                setState(() {
-                  color = v ?? 'blue';
-                })
-              },
-            ),
-            ElevatedButton(
-                onPressed: () => {
-                      context.read<CreateCollectionPageBloc>().add(
-                            CreateCollectionPageCreateCollectionEvent(
-                                CreateCollectionParams(
-                              name: _nameController.text,
-                              text: _textEditingController.text,
-                              status: status,
-                              color: color,
-                              poster: _posterFile!,
-                              banner: _bannerFile!,
-                            )),
-                          )
-                    },
-                child: const Text('Create Collection')),
           ],
         );
       },

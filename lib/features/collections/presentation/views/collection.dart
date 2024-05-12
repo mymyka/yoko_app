@@ -36,27 +36,39 @@ class CollectionPageView extends StatelessWidget {
                 padding: const EdgeInsets.all(30.0),
                 child: Column(
                   children: [
-                    Text(
-                      state.collection.name,
-                      style: Theme.of(context).textTheme.h2,
-                    ),
-                    Text(state.collection.id.toString()),
-                    const Text("Is stared"),
-                    Text(state.collection.isStarted.toString()),
-                    ElevatedButton(
-                      onPressed: () => context.go('/study/$collectionId'),
-                      child: const Text("Start Study"),
-                    ),
-                    ElevatedButton(
-                      onPressed: () => {
-                        context.read<CollectionPageBloc>().add(
-                              AddCollectionToUserEvent(
-                                AddCollectionToUserParams(
-                                    id: state.collection.id),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          state.collection.name,
+                          style: Theme.of(context).textTheme.h3,
+                        ),
+                        state.collection.isStarted
+                            ? IconButton(
+                                onPressed: () =>
+                                    context.go('/study/$collectionId'),
+                                icon: const Icon(Icons.school_rounded),
+                              )
+                            : IconButton(
+                                onPressed: () => {
+                                  context.read<CollectionPageBloc>().add(
+                                        AddCollectionToUserEvent(
+                                          AddCollectionToUserParams(
+                                              id: state.collection.id),
+                                        ),
+                                      )
+                                },
+                                icon: const Icon(Icons.add),
                               ),
-                            )
-                      },
-                      child: const Text("Add to user"),
+                      ],
+                    ),
+                    Container(
+                      width: 100,
+                      height: 100,
+                      child: PercentIndicator(
+                        percent: state.collection.wordsLearned /
+                            state.collection.wordsCount,
+                      ),
                     ),
                   ],
                 ),
