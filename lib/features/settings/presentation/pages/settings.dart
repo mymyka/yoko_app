@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/settings/presentation/bloc/theme_bloc.dart';
 import 'package:yoko_app/gen/strings.g.dart';
+import 'package:yoko_app/utils/ext/ext.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-      ),
-      body: const NewWidget(),
+    return const Scaffold(
+      body: NewWidget(),
     );
   }
 }
@@ -24,62 +22,63 @@ class NewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 16),
-        Center(
-          child: BlocBuilder<ThemeBloc, ThemeMode>(
-            builder: (context, state) {
-              return Column(
-                children: [
-                  DropdownButton(
-                    hint: Text('Theme: ${state.name}'),
-                    items: const [
-                      DropdownMenuItem(
-                        value: ThemeMode.system,
-                        child: Text('System Theme'),
-                      ),
-                      DropdownMenuItem(
-                        value: ThemeMode.light,
-                        child: Text('Light Theme'),
-                      ),
-                      DropdownMenuItem(
-                        value: ThemeMode.dark,
-                        child: Text('Dark Theme'),
-                      ),
-                    ],
-                    onChanged: (ThemeMode? value) {
-                      context.read<ThemeBloc>().add(ThemeChanged(value!));
-                    },
-                  ),
-                  Text(t.auth.welcome.heading),
-                  Switch(
-                    value:
-                        TranslationProvider.of(context).locale == AppLocale.ua,
-                    onChanged: (languageSwitched) {
-                      final newLocale =
-                          languageSwitched ? AppLocale.ua : AppLocale.en;
-                      LocaleSettings.setLocale(newLocale);
-                    },
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      LocaleSettings.setLocale(AppLocale.ua);
-                    },
-                    child: const Text('Ukrainian'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      LocaleSettings.setLocale(AppLocale.en);
-                    },
-                    child: const Text('English'),
-                  ),
-                ],
-              );
-            },
+    return Padding(
+      padding: const EdgeInsets.only(top: 100, left: 30),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(t.settings.heading, style: Theme.of(context).textTheme.h2),
+          Column(
+            children: [
+              Center(
+                child: BlocBuilder<ThemeBloc, ThemeMode>(
+                  builder: (context, state) {
+                    return Column(
+                      children: [
+                        DropdownButton(
+                          hint: Text(t.settings.theme),
+                          items: const [
+                            DropdownMenuItem(
+                              value: ThemeMode.system,
+                              child: Text('System Theme'),
+                            ),
+                            DropdownMenuItem(
+                              value: ThemeMode.light,
+                              child: Text('Light Theme'),
+                            ),
+                            DropdownMenuItem(
+                              value: ThemeMode.dark,
+                              child: Text('Dark Theme'),
+                            ),
+                          ],
+                          onChanged: (ThemeMode? value) {
+                            context.read<ThemeBloc>().add(ThemeChanged(value!));
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
-        ),
-      ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/img/flags/us.png', width: 50, height: 50),
+              Switch(
+                value: TranslationProvider.of(context).locale == AppLocale.ua,
+                onChanged: (languageSwitched) {
+                  final newLocale =
+                      languageSwitched ? AppLocale.ua : AppLocale.en;
+                  LocaleSettings.setLocale(newLocale);
+                },
+              ),
+              Image.asset('assets/img/flags/ua.png', width: 50, height: 50),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

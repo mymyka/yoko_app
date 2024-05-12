@@ -22,5 +22,12 @@
         "message": "Invalid email or password, please try again"
       }
     }
+  },
+  "settings": {
+    "heading": "Налаштування",
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light"
   }
 }

@@ -3,3 +3,4 @@ export 'constants/constants.dart';
 export 'services/services.dart';
 export 'ext/ext.dart';
 export 'theme/theme.dart';
+export 'local/local.dart';

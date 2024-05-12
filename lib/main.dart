@@ -52,9 +52,7 @@ class App extends StatelessWidget {
             title: 'Flutter Demo',
             theme: materialTheme.light(),
             darkTheme: materialTheme.dark(),
-            // themeMode: state,
-            // themeMode: ThemeMode.light,
-            themeMode: ThemeMode.light,
+            themeMode: state,
           ),
         );
       },

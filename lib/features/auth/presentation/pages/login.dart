@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             obscureText: true,
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                           Button.primary(
                             text: t.auth.login.button,
                             onTap: () {

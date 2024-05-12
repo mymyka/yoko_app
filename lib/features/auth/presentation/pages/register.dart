@@ -1,13 +1,9 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:yoko_app/features/auth/auth.dart';
-import 'package:yoko_app/features/auth/presentation/presentation.dart';
 import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/utils/utils.dart';
@@ -86,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 16),
+                              const SizedBox(width: 16),
                               Expanded(
                                 child: TextField(
                                   controller: _surnameController,
@@ -128,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             obscureText: true,
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                           Button.primary(
                             text: t.auth.register.button,
                             onTap: () {
