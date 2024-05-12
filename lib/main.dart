@@ -54,8 +54,8 @@ class App extends StatelessWidget {
             theme: materialTheme.light(),
             darkTheme: materialTheme.dark(),
             // themeMode: state,
-            themeMode: ThemeMode.light,
-            // themeMode: ThemeMode.system,
+            // themeMode: ThemeMode.light,
+            themeMode: ThemeMode.dark,
           ),
         );
       },

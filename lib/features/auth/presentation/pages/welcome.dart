@@ -50,21 +50,19 @@ class WelcomePage extends StatelessWidget {
             flex: 1,
             child: Container(
               color: Theme.of(context).colorScheme.background,
-              child: Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Button.primary(
-                      text: t.auth.register.button,
-                      onTap: () => context.go('/register'),
-                    ),
-                    const SizedBox(height: 20.0),
-                    Button.outlined(
-                      text: t.auth.login.button,
-                      onTap: () => context.go('/login'),
-                    ),
-                  ],
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Button.primary(
+                    text: t.auth.register.button,
+                    onTap: () => context.go('/register'),
+                  ),
+                  const SizedBox(height: 20.0),
+                  Button.outlined(
+                    text: t.auth.login.button,
+                    onTap: () => context.go('/login'),
+                  ),
+                ],
               ),
             ),
           ),

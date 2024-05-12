@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 extension TextThemeExtension on TextTheme {
-  TextStyle? get h1 => GoogleFonts.montserrat(
+  // TextStyle? get h1 => GoogleFonts.montserrat(
+  //       fontSize: 45,
+  //       fontWeight: FontWeight.w500,
+  //     );
+
+  TextStyle? get h1 => bodyLarge?.copyWith(
         fontSize: 45,
-        fontWeight: FontWeight.w500,
+        fontFamily: 'Serif',
+        fontWeight: FontWeight.w900,
       );
 
   TextStyle? get h2 => bodyLarge?.copyWith(

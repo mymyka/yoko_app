@@ -26,6 +26,13 @@ abstract class Button extends StatelessWidget {
     Icon? icon,
     void Function()? onTap,
   }) = OutlinedButton;
+
+  const factory Button.link({
+    Key? key,
+    required String text,
+    Icon? icon,
+    void Function()? onTap,
+  }) = LinkButton;
 }
 
 class PrimaryButton extends Button {
@@ -109,6 +116,37 @@ class OutlinedButton extends Button {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class LinkButton extends Button {
+  const LinkButton({
+    super.key,
+    required super.text,
+    super.icon,
+    super.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: GestureDetector(
+        onTap: onTap,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            if (icon != null) icon!,
+            Text(
+              text,
+              style: Theme.of(context).textTheme.body?.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                    decoration: TextDecoration.underline,
+                  ),
+            ),
+          ],
         ),
       ),
     );

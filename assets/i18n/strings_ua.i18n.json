@@ -6,11 +6,13 @@
     },
     "login": {
       "heading": "Log in",
-      "button": "Log in"
+      "button": "Log in",
+      "create": "Don't have an account?, create one here"
     },
     "register": {
       "heading": "Register",
-      "button": "Register"
+      "button": "Register",
+      "haveAccount": "Already have an account?, sign in here"
     }
   }
 }
