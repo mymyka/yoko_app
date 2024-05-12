@@ -131,7 +131,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
               ),
             ),
             DropdownButton(
-              hint: Text(status ?? ''),
+              hint: Text(status),
               items: const [
                 DropdownMenuItem(
                   value: 'public',
@@ -149,7 +149,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
               },
             ),
             DropdownButton(
-              hint: Text(color ?? ''),
+              hint: Text(color),
               items: const [
                 DropdownMenuItem(
                   value: '#9fc5e8',
