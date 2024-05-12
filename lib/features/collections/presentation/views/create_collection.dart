@@ -2,9 +2,7 @@ import 'dart:io';
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/collections/collections.dart';
 import 'package:yoko_app/features/general/general.dart';
@@ -107,7 +105,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                             ),
                           ),
                         ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -128,7 +126,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 16),
+                            const SizedBox(width: 16),
                             _posterFile != null
                                 ? Container(
                                     height: 100,
@@ -167,7 +165,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                                   ),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -189,7 +187,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                                 })
                               },
                             ),
-                            SizedBox(width: 16),
+                            const SizedBox(width: 16),
                             DropdownButton(
                               hint: Text(color),
                               items: const [
@@ -210,7 +208,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         TextField(
                           controller: _textEditingController,
                           decoration: InputDecoration(
@@ -222,7 +220,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Button.primary(
                           text: 'Create Collection',
                           onTap: () {

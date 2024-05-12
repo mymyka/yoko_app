@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:yoko_app/features/collections/collections.dart';
 import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/utils/ext/ext.dart';
@@ -62,7 +61,7 @@ class CollectionPageView extends StatelessWidget {
                               ),
                       ],
                     ),
-                    Container(
+                    SizedBox(
                       width: 100,
                       height: 100,
                       child: PercentIndicator(

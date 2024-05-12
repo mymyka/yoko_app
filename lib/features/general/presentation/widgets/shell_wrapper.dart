@@ -35,7 +35,7 @@ class _ShellWrapperState extends State<ShellWrapper> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: Navbar(),
+        appBar: const Navbar(),
         body: SizedBox(
           width: double.infinity,
           height: double.infinity,
