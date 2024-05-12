@@ -7,12 +7,20 @@
     "login": {
       "heading": "Log in",
       "button": "Log in",
-      "create": "Don't have an account?, create one here"
+      "create": "Don't have an account?, create one here",
+      "error": {
+        "heading": "Error",
+        "message": "Invalid email or password, please try again"
+      }
     },
     "register": {
       "heading": "Register",
       "button": "Register",
-      "haveAccount": "Already have an account?, sign in here"
+      "haveAccount": "Already have an account?, sign in here",
+      "error": {
+        "heading": "Error",
+        "message": "Invalid email or password, please try again"
+      }
     }
   }
 }
