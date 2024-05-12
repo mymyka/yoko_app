@@ -66,13 +66,13 @@ class NewWidget extends StatelessWidget {
                     onPressed: () {
                       LocaleSettings.setLocale(AppLocale.ua);
                     },
-                    child: Text('Ukrainian'),
+                    child: const Text('Ukrainian'),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       LocaleSettings.setLocale(AppLocale.en);
                     },
-                    child: Text('English'),
+                    child: const Text('English'),
                   ),
                 ],
               );
