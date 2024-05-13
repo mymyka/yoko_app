@@ -85,6 +85,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                       controller: _passwordController,
                       labelText: "Password",
                       onPrimary: true,
+                      obscureText: true,
                     ),
                     const SizedBox(height: 16),
                     Button.primary(
