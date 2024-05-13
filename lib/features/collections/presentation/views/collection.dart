@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yoko_app/features/collections/collections.dart';
+import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/utils/ext/ext.dart';
 
 class CollectionPageView extends StatelessWidget {
@@ -94,14 +95,14 @@ class CollectionPageView extends StatelessWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.account_balance_rounded),
-                title: const Text('Words total'),
+                title: Text(t.words.words_total),
                 subtitle: Text(
                   collection.wordsCount.toString(),
                 ),
               ),
               ListTile(
                 leading: const Icon(Icons.school_rounded),
-                title: const Text('Words Learned'),
+                title: Text(t.words.words_learned),
                 subtitle: Text(
                   collection.wordsLearned.toString(),
                 ),

@@ -29,5 +29,12 @@
     "theme": "Theme",
     "dark": "Dark",
     "light": "Light"
+  },
+  "words": {
+    "words_total": "Всього слів",
+    "words_learned": "Слів вивчено"
+  },
+  "score": {
+    "heading": "Ваш рахунок"
   }
 }

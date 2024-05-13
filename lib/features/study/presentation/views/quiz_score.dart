@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yoko_app/features/general/general.dart';
+import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/utils/ext/ext.dart';
 
 class QuizScoreView extends StatelessWidget {
@@ -16,7 +17,7 @@ class QuizScoreView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Your score is:',
+              t.score.heading,
               style: Theme.of(context).textTheme.h2,
             ),
             const SizedBox(height: 20),

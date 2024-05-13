@@ -29,5 +29,12 @@
     "theme": "Theme",
     "dark": "Dark",
     "light": "Light"
+  },
+  "words": {
+    "words_total": "Total words",
+    "words_learned": "Learned words"
+  },
+  "score": {
+    "heading": "Score"
   }
 }
