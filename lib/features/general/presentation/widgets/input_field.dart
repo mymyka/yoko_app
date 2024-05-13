@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoko_app/utils/ext/ext.dart';
 
 class InputField extends StatelessWidget {
   final TextEditingController controller;
@@ -18,6 +19,11 @@ class InputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      style: Theme.of(context).textTheme.body?.copyWith(
+            color: onPrimary
+                ? Theme.of(context).colorScheme.onPrimary
+                : Theme.of(context).colorScheme.primary,
+          ),
       obscureText: obscureText,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
