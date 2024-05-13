@@ -25,13 +25,26 @@ class StudyOptionsPage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Card(
-              child: ListTile(
-                title: const Text('Quiz'),
+              child: InkWell(
                 onTap: () {
                   context.go('/study/$collectionId/quiz');
                 },
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://thumbs.dreamstime.com/b/male-hand-holding-megaphone-quiz-time-speech-bubble-loudspeaker-banner-business-marketing-advertising-vector-125104939.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
