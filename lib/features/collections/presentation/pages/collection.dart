@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/collections/collections.dart';
-import 'package:yoko_app/injection_container.dart';
+import 'package:yoko_app/features/general/general.dart';
 
 class CollectionPage extends StatelessWidget {
   final int id;
@@ -10,14 +10,24 @@ class CollectionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CollectionPageBloc>(
-      create: (context) => CollectionPageBloc(sl(), sl())
-        ..add(
-          GetCollectionById(
-            GetCollectionByIdParams(id: id),
-          ),
-        ),
-      child: CollectionPageView(collectionId: id),
+    return CollectionPageProvider(
+      id: id,
+      child: BlocBuilder<CollectionPageBloc, CollectionPageState>(
+        builder: (context, state) {
+          if (state is CollectionPageLoading) {
+            return const Center(
+              child: Spinner(),
+            );
+          } else if (state is CollectionPageLoaded) {
+            return CollectionPageView(collection: state.collection);
+          } else if (state is CollectionPageError) {
+            return Center(
+              child: Text(state.message),
+            );
+          }
+          return const SizedBox.shrink();
+        },
+      ),
     );
   }
 }
