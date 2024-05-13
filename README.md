@@ -4,13 +4,15 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+<span style="color:red">
+<h1>Attention</h1>
+</span>
+I use `file_picker` library is it setup for android, but I don't have ios, so it could require additional setup for ios. [ios guide](https://github.com/miguelpruivo/flutter_file_picker/wiki/Setup#--ios)
 
-A few resources to get you started if this is your first Flutter project:
+### Run guide
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+flutter pub get
+dart run build_runner build -d
+flutter run
+```
