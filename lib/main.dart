@@ -8,7 +8,7 @@ import 'package:yoko_app/injection_container.dart';
 import 'package:yoko_app/utils/utils.dart';
 
 void main() async {
-  await MainBoxMixin.initHive('yoko_app_test_new_test');
+  await MainBoxMixin.initHive('yoko_app_test_run_new');
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
   await initializeDependencies();

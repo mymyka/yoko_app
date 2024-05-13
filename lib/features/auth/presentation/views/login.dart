@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
+import 'package:yoko_app/features/auth/auth.dart';
+import 'package:yoko_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/utils/ext/ext.dart';
@@ -60,9 +63,19 @@ class _LoginPageViewState extends State<LoginPageView> {
                       onPrimary: true,
                     ),
                     const SizedBox(height: 16),
-                    const Button.primary(
-                      text: "Register",
+                    Button.primary(
+                      text: "Log In",
                       onPrimary: true,
+                      onTap: () {
+                        context.read<AuthBloc>().add(
+                              AuthLogin(
+                                params: LogInParams(
+                                  email: _emailController.text,
+                                  password: _passwordController.text,
+                                ),
+                              ),
+                            );
+                      },
                     )
                   ],
                 ),
