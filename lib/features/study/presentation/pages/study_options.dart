@@ -47,6 +47,46 @@ class StudyOptionsPage extends StatelessWidget {
                 ),
               ),
             ),
+            Card(
+              child: InkWell(
+                onTap: () {
+                  context.go('/study/$collectionId/quiz');
+                },
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://play-lh.googleusercontent.com/8xSX7C0edYgitTGwdbqgoB9jt5lp4nO7VY_jkE3jWUCypcugn5aRHSn9Y8-qQA53GSo'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: InkWell(
+                onTap: () {
+                  context.go('/study/$collectionId/quiz');
+                },
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://play-lh.googleusercontent.com/FnsgGVK7BsdH3ckrTFq8OhBNlbZMlNOUEU-AJF85aGmwepitRbKK5a_4xgmXZ2f5FA=w240-h480-rw'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
