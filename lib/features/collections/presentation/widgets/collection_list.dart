@@ -13,14 +13,17 @@ class CollectionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: collections.length,
-      separatorBuilder: (context, index) => const SizedBox(height: 8),
-      itemBuilder: (context, index) => CollectionCard(
-        collection: collections[index],
-        onTap: () => {
-          onTap(context, collections[index]),
-        },
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: ListView.separated(
+        itemCount: collections.length,
+        separatorBuilder: (context, index) => const SizedBox(height: 8),
+        itemBuilder: (context, index) => CollectionCard(
+          collection: collections[index],
+          onTap: () => {
+            onTap(context, collections[index]),
+          },
+        ),
       ),
     );
   }
