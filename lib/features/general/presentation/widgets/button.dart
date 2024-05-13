@@ -5,12 +5,14 @@ abstract class Button extends StatelessWidget {
   final String text;
   final Icon? icon;
   final void Function()? onTap;
+  final bool onPrimary;
 
   const Button({
     super.key,
     required this.text,
     this.icon,
     this.onTap,
+    this.onPrimary = false,
   });
 
   const factory Button.primary({
@@ -18,6 +20,7 @@ abstract class Button extends StatelessWidget {
     required String text,
     Icon? icon,
     void Function()? onTap,
+    bool onPrimary,
   }) = PrimaryButton;
 
   const factory Button.outlined({
@@ -32,6 +35,7 @@ abstract class Button extends StatelessWidget {
     required String text,
     Icon? icon,
     void Function()? onTap,
+    bool onPrimary,
   }) = LinkButton;
 }
 
@@ -41,6 +45,7 @@ class PrimaryButton extends Button {
     required super.text,
     super.icon,
     super.onTap,
+    super.onPrimary = false,
   });
 
   @override
@@ -55,7 +60,9 @@ class PrimaryButton extends Button {
             height: 50.0,
             width: 200.0,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
+              color: onPrimary
+                  ? Theme.of(context).colorScheme.onPrimary
+                  : Theme.of(context).colorScheme.primary,
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Row(
@@ -65,7 +72,9 @@ class PrimaryButton extends Button {
                 Text(
                   text,
                   style: Theme.of(context).textTheme.body?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
+                        color: onPrimary
+                            ? Theme.of(context).colorScheme.primary
+                            : Theme.of(context).colorScheme.onPrimary,
                       ),
                 ),
               ],
@@ -128,6 +137,7 @@ class LinkButton extends Button {
     required super.text,
     super.icon,
     super.onTap,
+    super.onPrimary = false,
   });
 
   @override
@@ -142,8 +152,13 @@ class LinkButton extends Button {
             Text(
               text,
               style: Theme.of(context).textTheme.body?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
+                    color: onPrimary
+                        ? Theme.of(context).colorScheme.onPrimary
+                        : Theme.of(context).colorScheme.primary,
                     decoration: TextDecoration.underline,
+                    decorationColor: onPrimary
+                        ? Theme.of(context).colorScheme.onPrimary
+                        : Theme.of(context).colorScheme.primary,
                   ),
             ),
           ],

@@ -3,3 +3,4 @@ export 'button.dart';
 export 'spinner.dart';
 export 'logo.dart';
 export 'navbar.dart';
+export 'input_field.dart';
