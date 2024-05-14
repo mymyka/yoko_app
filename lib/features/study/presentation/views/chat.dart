@@ -1,6 +1,8 @@
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yoko_app/features/auth/auth.dart';
 import 'package:yoko_app/features/study/study.dart';
 import 'package:yoko_app/utils/utils.dart';
 
@@ -16,7 +18,7 @@ class ChatView extends StatefulWidget {
   State<ChatView> createState() => _ChatViewState();
 }
 
-class _ChatViewState extends State<ChatView> {
+class _ChatViewState extends State<ChatView> with MainBoxMixin {
   final _openAI = OpenAI.instance.build(
     token: OPENAI_API_KEY,
     baseOption: HttpSetup(
@@ -25,17 +27,8 @@ class _ChatViewState extends State<ChatView> {
     enableLog: true,
   );
 
-  final ChatUser _user = ChatUser(
-    id: '1',
-    firstName: 'Charles',
-    lastName: 'Leclerc',
-  );
-
-  final ChatUser _gptChatUser = ChatUser(
-    id: '2',
-    firstName: 'Chat',
-    lastName: 'GPT',
-  );
+  late final ChatUser _user;
+  late final ChatUser _gptChatUser;
 
   final List<ChatMessage> _messages = <ChatMessage>[];
   final List<ChatUser> _typingUsers = <ChatUser>[];
@@ -43,6 +36,19 @@ class _ChatViewState extends State<ChatView> {
   @override
   void initState() {
     super.initState();
+    final state = context.read<AuthBloc>().state;
+    if (state is AuthSuccess) {
+      _user = ChatUser(
+        id: state.credentials.user.id.toString(),
+        firstName: state.credentials.user.name,
+        lastName: state.credentials.user.surname,
+      );
+    }
+    _gptChatUser = ChatUser(
+      id: 'gpt',
+      firstName: 'GPT',
+      lastName: 'Assistant',
+    );
     _messages.add(
       ChatMessage(
         text:
@@ -56,31 +62,49 @@ class _ChatViewState extends State<ChatView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.scrim,
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(
-          0,
-          166,
-          126,
-          1,
-        ),
-        title: const Text(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(
           'GPT Chat',
           style: TextStyle(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
       ),
       body: DashChat(
         currentUser: _user,
-        messageOptions: const MessageOptions(
-          currentUserContainerColor: Colors.black,
-          containerColor: Color.fromRGBO(
-            0,
-            166,
-            126,
-            1,
+        messageOptions: MessageOptions(
+          currentUserContainerColor: Theme.of(context).colorScheme.tertiary,
+          currentUserTextColor: Theme.of(context).colorScheme.onTertiary,
+          containerColor: Theme.of(context).colorScheme.primary,
+          textColor: Theme.of(context).colorScheme.onPrimary,
+          messageRowBuilder: (message, previousMessage, nextMessage,
+                  isAfterDateSeparator, isBeforeDateSeparator) =>
+              MessageRow(
+            currentUser: _user,
+            message: message,
+            previousMessage: previousMessage,
+            nextMessage: nextMessage,
+            isAfterDateSeparator: isAfterDateSeparator,
+            isBeforeDateSeparator: isBeforeDateSeparator,
+            messageOptions: MessageOptions(
+              currentUserContainerColor: Theme.of(context).colorScheme.tertiary,
+              currentUserTextColor: Theme.of(context).colorScheme.onTertiary,
+              containerColor: Theme.of(context).colorScheme.primary,
+              textColor: Theme.of(context).colorScheme.onPrimary,
+            ),
           ),
-          textColor: Colors.white,
+          // b: (Function onSend) {
+          //   return IconButton(
+          //     icon: Icon(Icons.send),
+          //     onPressed: () {
+          //       // Call onSend function when button is pressed
+          //       onSend();
+          //     },
+          //     color: Colors.blue, // Change the color here
+          //   );
+          // },
         ),
         onSend: (ChatMessage m) {
           getChatResponse(m);
