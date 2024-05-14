@@ -111,6 +111,23 @@ Future<void> initializeDependencies() async {
     ),
   );
 
+  // Text
+  sl.registerLazySingleton<TextRemoteDataSource>(
+    () => TextRemoteDataSource(
+      sl(),
+    ),
+  );
+  sl.registerLazySingleton<TextRepository>(
+    () => TextRepositoryImpl(
+      sl(),
+    ),
+  );
+  sl.registerLazySingleton<GetTextStudyUseCase>(
+    () => GetTextStudyUseCase(
+      sl(),
+    ),
+  );
+
   // Settings
   sl.registerLazySingleton<ThemeBloc>(
     () => ThemeBloc()..add(ThemeLoadFromLocalStorage()),

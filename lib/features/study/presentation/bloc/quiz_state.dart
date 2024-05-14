@@ -28,13 +28,3 @@ final class QuizErrorState extends QuizState {
   @override
   List<Object> get props => [message];
 }
-
-final class QuizFinishedState extends QuizState {
-  final int correctAnswers;
-  final int totalQuestions;
-
-  const QuizFinishedState(this.correctAnswers, this.totalQuestions);
-
-  @override
-  List<Object> get props => [correctAnswers, totalQuestions];
-}

@@ -112,6 +112,17 @@ class AppRouter {
               return QuizPage(collectionId: collectionId);
             },
           ),
+          GoRoute(
+            path: 'text',
+            name: 'Text Study Page',
+            builder: (context, state) {
+              final collectionId = int.parse(state.pathParameters['id']!);
+              return TextStudyProvider(
+                collectionId: collectionId,
+                child: TextStudyPage(collectionId: collectionId),
+              );
+            },
+          ),
         ],
       ),
       GoRoute(
