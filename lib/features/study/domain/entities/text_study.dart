@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:yoko_app/features/study/domain/entities/text.dart';
 import 'package:yoko_app/features/study/study.dart';
 
 part 'text_study.g.dart';

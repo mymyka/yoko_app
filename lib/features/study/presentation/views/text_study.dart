@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/features/study/study.dart';
 import 'package:popover/popover.dart';
 import 'package:yoko_app/utils/ext/ext.dart';
@@ -26,7 +24,7 @@ class TextStudyPageView extends StatelessWidget {
             runSpacing: 10,
             direction: Axis.horizontal,
             children: [
-              SizedBox(width: 50),
+              const SizedBox(width: 50),
               ..._buildTextTokens(context),
             ],
           ),

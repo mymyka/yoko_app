@@ -59,7 +59,7 @@ class HomeCollectionsView extends StatelessWidget {
                           ),
                         );
                   },
-                  icon: Icon(Icons.refresh),
+                  icon: const Icon(Icons.refresh),
                 )
               ],
             ),
