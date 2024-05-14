@@ -25,25 +25,43 @@ class StoreCollectionsView extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.background,
           flexibleSpace: Padding(
             padding: const EdgeInsets.only(right: 16, left: 16),
-            child: SegmentedButton(
-              segments: List.generate(
-                pageCollections.lastPage,
-                (index) => ButtonSegment(
-                  value: index + 1,
-                  label: Text('${index + 1}'),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SegmentedButton(
+                  segments: List.generate(
+                    pageCollections.lastPage,
+                    (index) => ButtonSegment(
+                      value: index + 1,
+                      label: Text('${index + 1}'),
+                    ),
+                  ),
+                  selected: {pageCollections.currentPage},
+                  onSelectionChanged: (value) {
+                    context.read<PublicCollectionListBloc>().add(
+                          FetchPublicCollections(
+                            GetCollectionsParams(
+                              page: value.first,
+                              pageSize: 10,
+                            ),
+                          ),
+                        );
+                  },
                 ),
-              ),
-              selected: {pageCollections.currentPage},
-              onSelectionChanged: (value) {
-                context.read<PublicCollectionListBloc>().add(
-                      FetchPublicCollections(
-                        GetCollectionsParams(
-                          page: value.first,
-                          pageSize: 10,
-                        ),
-                      ),
-                    );
-              },
+                IconButton(
+                  onPressed: () {
+                    context.read<PublicCollectionListBloc>().add(
+                          FetchPublicCollections(
+                            GetCollectionsParams(
+                              page: pageCollections.currentPage,
+                              pageSize: 10,
+                            ),
+                          ),
+                        );
+                  },
+                  icon: Icon(Icons.refresh),
+                ),
+              ],
             ),
           ),
         ),
