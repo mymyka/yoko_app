@@ -123,6 +123,14 @@ class AppRouter {
               );
             },
           ),
+          GoRoute(
+            path: 'chat',
+            name: 'Chat Study Page',
+            builder: (context, state) {
+              final collectionId = int.parse(state.pathParameters['id']!);
+              return ChatPage(collectionId: collectionId);
+            },
+          ),
         ],
       ),
       GoRoute(
