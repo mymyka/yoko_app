@@ -71,6 +71,50 @@ class AppRouter {
                       final id = int.parse(state.pathParameters['id']!);
                       return CollectionPage(id: id);
                     },
+                    routes: [
+                      GoRoute(
+                        path: 'study',
+                        name: 'Study Options Page',
+                        builder: (context, state) {
+                          final collectionId =
+                              int.parse(state.pathParameters['id']!);
+                          return StudyOptionsPage(collectionId: collectionId);
+                        },
+                        routes: [
+                          GoRoute(
+                            path: 'quiz',
+                            name: 'Quiz Page',
+                            builder: (context, state) {
+                              final collectionId =
+                                  int.parse(state.pathParameters['id']!);
+                              return QuizPage(collectionId: collectionId);
+                            },
+                          ),
+                          GoRoute(
+                            path: 'text',
+                            name: 'Text Study Page',
+                            builder: (context, state) {
+                              final collectionId =
+                                  int.parse(state.pathParameters['id']!);
+                              return TextStudyProvider(
+                                collectionId: collectionId,
+                                child:
+                                    TextStudyPage(collectionId: collectionId),
+                              );
+                            },
+                          ),
+                          GoRoute(
+                            path: 'chat',
+                            name: 'Chat Study Page',
+                            builder: (context, state) {
+                              final collectionId =
+                                  int.parse(state.pathParameters['id']!);
+                              return ChatPage(collectionId: collectionId);
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   GoRoute(
                     path: 'collection/create/page',
@@ -96,43 +140,43 @@ class AppRouter {
           ),
         ],
       ),
-      GoRoute(
-        path: '/study/:id',
-        name: 'Study Options Page',
-        builder: (context, state) {
-          final collectionId = int.parse(state.pathParameters['id']!);
-          return StudyOptionsPage(collectionId: collectionId);
-        },
-        routes: [
-          GoRoute(
-            path: 'quiz',
-            name: 'Quiz Page',
-            builder: (context, state) {
-              final collectionId = int.parse(state.pathParameters['id']!);
-              return QuizPage(collectionId: collectionId);
-            },
-          ),
-          GoRoute(
-            path: 'text',
-            name: 'Text Study Page',
-            builder: (context, state) {
-              final collectionId = int.parse(state.pathParameters['id']!);
-              return TextStudyProvider(
-                collectionId: collectionId,
-                child: TextStudyPage(collectionId: collectionId),
-              );
-            },
-          ),
-          GoRoute(
-            path: 'chat',
-            name: 'Chat Study Page',
-            builder: (context, state) {
-              final collectionId = int.parse(state.pathParameters['id']!);
-              return ChatPage(collectionId: collectionId);
-            },
-          ),
-        ],
-      ),
+      // GoRoute(
+      //   path: '/study/:id',
+      //   name: 'Study Options Page',
+      //   builder: (context, state) {
+      //     final collectionId = int.parse(state.pathParameters['id']!);
+      //     return StudyOptionsPage(collectionId: collectionId);
+      //   },
+      //   routes: [
+      //     GoRoute(
+      //       path: 'quiz',
+      //       name: 'Quiz Page',
+      //       builder: (context, state) {
+      //         final collectionId = int.parse(state.pathParameters['id']!);
+      //         return QuizPage(collectionId: collectionId);
+      //       },
+      //     ),
+      //     GoRoute(
+      //       path: 'text',
+      //       name: 'Text Study Page',
+      //       builder: (context, state) {
+      //         final collectionId = int.parse(state.pathParameters['id']!);
+      //         return TextStudyProvider(
+      //           collectionId: collectionId,
+      //           child: TextStudyPage(collectionId: collectionId),
+      //         );
+      //       },
+      //     ),
+      //     GoRoute(
+      //       path: 'chat',
+      //       name: 'Chat Study Page',
+      //       builder: (context, state) {
+      //         final collectionId = int.parse(state.pathParameters['id']!);
+      //         return ChatPage(collectionId: collectionId);
+      //       },
+      //     ),
+      //   ],
+      // ),
       GoRoute(
         path: '/authGuard',
         redirect: (context, state) async {

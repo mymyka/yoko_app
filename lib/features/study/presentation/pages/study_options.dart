@@ -18,7 +18,7 @@ class StudyOptionsPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              context.go('/home/collection/$collectionId');
+              // context.go('/home/collection/$collectionId');
             },
           ),
         ],
@@ -29,7 +29,7 @@ class StudyOptionsPage extends StatelessWidget {
             Card(
               child: InkWell(
                 onTap: () {
-                  context.go('/study/$collectionId/quiz');
+                  context.go('/home/collection/${collectionId}/study/quiz');
                 },
                 child: Container(
                   width: 200,
@@ -49,7 +49,7 @@ class StudyOptionsPage extends StatelessWidget {
             Card(
               child: InkWell(
                 onTap: () {
-                  context.go('/study/$collectionId/text');
+                  context.go('/home/collection/${collectionId}/study/text');
                 },
                 child: Container(
                   width: 200,
@@ -70,7 +70,7 @@ class StudyOptionsPage extends StatelessWidget {
             Card(
               child: InkWell(
                 onTap: () {
-                  context.go('/study/$collectionId/chat');
+                  context.go('/home/collection/${collectionId}/study/chat');
                 },
                 child: Container(
                   width: 200,

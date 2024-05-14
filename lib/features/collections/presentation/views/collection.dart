@@ -65,8 +65,10 @@ class CollectionPageView extends StatelessWidget {
                 children: [
                   collection.isStarted
                       ? IconButton(
-                          onPressed: () =>
-                              context.go('/study/${collection.id}'),
+                          onPressed: () => {
+                            context
+                                .go('/home/collection/${collection.id}/study')
+                          },
                           icon: const Icon(Icons.school_rounded),
                         )
                       : IconButton(
