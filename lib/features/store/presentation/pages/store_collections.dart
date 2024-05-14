@@ -9,17 +9,27 @@ class StoreCollectionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PublicCollectionListBloc(sl())
-        ..add(
-          const FetchPublicCollections(
-            GetCollectionsParams(
-              page: 1,
-              pageSize: 10,
-            ),
-          ),
-        ),
-      child: const StoreCollectionsView(),
+    return StoreCollectionsPageProvider(
+      child: BlocConsumer<PublicCollectionListBloc, StoreCollectionsState>(
+        listener: (context, state) {
+          if (state is StoreCollectionsError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message)),
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is StoreCollectionsLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is StoreCollectionsLoaded) {
+            return StoreCollectionsView(pageCollections: state.pageCollections);
+          } else if (state is StoreCollectionsInitial) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return const Center(child: Text('Error'));
+          }
+        },
+      ),
     );
   }
 }

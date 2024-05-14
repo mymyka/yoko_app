@@ -67,19 +67,3 @@ class _QuizQuestionViewState extends State<QuizQuestionView> {
     );
   }
 }
-
-// Text(question.word),
-//             ...question.answers.map((answer) => Text(answer.translation)),
-//             ElevatedButton(
-//               onPressed: () {
-//                 controller.nextPage(
-//                   duration: const Duration(milliseconds: 1500),
-//                   curve: Curves.elasticOut,
-//                 );
-//               },
-//               child: const Text('Next'),
-//             ),
-//             ElevatedButton(
-//               onPressed: onRightAnswer,
-//               child: const Text('Right Answear'),
-//             ),
