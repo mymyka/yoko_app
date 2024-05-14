@@ -30,21 +30,19 @@ class _QuizViewState extends State<QuizView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        scrollDirection: Axis.vertical,
-        controller: _controller,
-        children: [
-          ...widget.questions.map(
-            (e) => QuizQuestionView(
-              question: e,
-              controller: _controller,
-              onRightAnswer: incrementScore,
-            ),
+    return PageView(
+      scrollDirection: Axis.vertical,
+      controller: _controller,
+      children: [
+        ...widget.questions.map(
+          (e) => QuizQuestionView(
+            question: e,
+            controller: _controller,
+            onRightAnswer: incrementScore,
           ),
-          QuizScoreView(score: score),
-        ],
-      ),
+        ),
+        QuizScoreView(score: score),
+      ],
     );
   }
 }

@@ -12,21 +12,24 @@ class QuizPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return QuizPageProvider(
-      collectionId: collectionId,
-      child: BlocBuilder<QuizBloc, QuizState>(
-        builder: (context, state) {
-          if (state is QuizInitialState) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is QuizLoadingState) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is QuizLoadedState) {
-            return QuizView(questions: state.questions);
-          } else if (state is QuizErrorState) {
-            return const Center(child: Text('Failed to fetch quiz'));
-          }
-          return const Center(child: Text('Unknown error'));
-        },
+    return Scaffold(
+      appBar: AppBar(title: const Text('Quiz')),
+      body: QuizPageProvider(
+        collectionId: collectionId,
+        child: BlocBuilder<QuizBloc, QuizState>(
+          builder: (context, state) {
+            if (state is QuizInitialState) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is QuizLoadingState) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is QuizLoadedState) {
+              return QuizView(questions: state.questions);
+            } else if (state is QuizErrorState) {
+              return const Center(child: Text('Failed to fetch quiz'));
+            }
+            return const Center(child: Text('Unknown error'));
+          },
+        ),
       ),
     );
   }
