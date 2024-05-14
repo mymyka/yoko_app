@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/features/home/home.dart';
 
 class HomeCollectionsPage extends StatelessWidget {
@@ -12,7 +13,7 @@ class HomeCollectionsPage extends StatelessWidget {
         builder: (context, state) {
           if (state is HomeCollectionsLoading) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: Spinner(),
             );
           } else if (state is HomeCollectionsLoaded) {
             return HomeCollectionsView(pageCollections: state.pageCollections);

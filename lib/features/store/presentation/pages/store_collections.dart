@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/features/store/store.dart';
 
 class StoreCollectionsPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class StoreCollectionsPage extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is StoreCollectionsLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: Spinner());
           } else if (state is StoreCollectionsLoaded) {
             return StoreCollectionsView(pageCollections: state.pageCollections);
           } else if (state is StoreCollectionsInitial) {
