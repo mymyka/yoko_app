@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yoko_app/features/general/domain/domain.dart';
@@ -65,18 +66,21 @@ class StoreCollectionsView extends StatelessWidget {
             ),
           ),
         ),
-        SliverList.separated(
-          itemCount: pageCollections.data.length,
-          itemBuilder: (context, index) {
-            return CollectionCard(
-              collection: pageCollections.data[index],
-              onTap: () {
-                context
-                    .go('/store/collection/${pageCollections.data[index].id}');
-              },
-            );
-          },
-          separatorBuilder: (context, index) => const SizedBox(height: 8),
+        SliverPadding(
+          padding: const EdgeInsets.all(16),
+          sliver: SliverList.separated(
+            itemCount: pageCollections.data.length,
+            itemBuilder: (context, index) {
+              return CollectionCard(
+                collection: pageCollections.data[index],
+                onTap: () {
+                  context.go(
+                      '/store/collection/${pageCollections.data[index].id}');
+                },
+              );
+            },
+            separatorBuilder: (context, index) => const SizedBox(height: 8),
+          ),
         ),
       ],
     );
