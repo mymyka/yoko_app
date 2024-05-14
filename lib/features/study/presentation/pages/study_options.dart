@@ -35,11 +35,11 @@ class StudyOptionsPage extends StatelessWidget {
                   width: 200,
                   height: 200,
                   padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'https://thumbs.dreamstime.com/b/male-hand-holding-megaphone-quiz-time-speech-bubble-loudspeaker-banner-business-marketing-advertising-vector-125104939.jpg'),
+                      image: Image.asset('assets/img/preview/quiz-preview.jpg')
+                          .image,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -55,11 +55,12 @@ class StudyOptionsPage extends StatelessWidget {
                   width: 200,
                   height: 200,
                   padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'https://images.unsplash.com/photo-1553729784-e91953dec042?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29uJTIwcmVhZGluZ3xlbnwwfHwwfHx8MA%3D%3D'),
+                      image:
+                          Image.asset('assets/img/preview/reading-preview.jpg')
+                              .image,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -75,11 +76,11 @@ class StudyOptionsPage extends StatelessWidget {
                   width: 200,
                   height: 200,
                   padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'https://play-lh.googleusercontent.com/8xSX7C0edYgitTGwdbqgoB9jt5lp4nO7VY_jkE3jWUCypcugn5aRHSn9Y8-qQA53GSo'),
+                      image: Image.asset('assets/img/preview/chat-preview.jpg')
+                          .image,
                       fit: BoxFit.cover,
                     ),
                   ),
