@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/features/study/study.dart';
 import 'package:yoko_app/utils/ext/ext.dart';
@@ -9,7 +8,7 @@ class QuizQuestionView extends StatefulWidget {
   final PageController controller;
   final void Function() onRightAnswer;
 
-  QuizQuestionView({
+  const QuizQuestionView({
     super.key,
     required this.question,
     required this.controller,

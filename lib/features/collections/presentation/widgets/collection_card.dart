@@ -37,7 +37,7 @@ class CollectionCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 100,
                       child: Text(
                         collection.name,

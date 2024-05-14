@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/store/store.dart';
-import 'package:yoko_app/features/collections/collections.dart';
-import 'package:yoko_app/injection_container.dart';
 
 class StoreCollectionsPage extends StatelessWidget {
   const StoreCollectionsPage({super.key});

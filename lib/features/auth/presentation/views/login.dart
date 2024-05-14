@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:yoko_app/features/auth/auth.dart';
-import 'package:yoko_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/utils/ext/ext.dart';
