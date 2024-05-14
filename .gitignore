@@ -49,3 +49,6 @@ pubspec.lock
 **/*.g.dart
 **/*.freezed.dart
 lib/gen/**
+
+# Env
+.env

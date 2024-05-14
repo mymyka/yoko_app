@@ -6,8 +6,10 @@ import 'package:yoko_app/features/settings/settings.dart';
 import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/injection_container.dart';
 import 'package:yoko_app/utils/utils.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
+  await dotenv.load(fileName: ".env");
   await MainBoxMixin.initHive('yoko_app_test_run_new_lol');
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
