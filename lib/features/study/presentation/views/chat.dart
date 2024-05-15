@@ -63,17 +63,29 @@ class _ChatViewState extends State<ChatView> with MainBoxMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.scrim,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: Text(
           t.study.chat.heading,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimary,
-          ),
         ),
       ),
       body: DashChat(
+        inputOptions: InputOptions(
+          alwaysShowSend: true,
+          sendOnEnter: true,
+          inputTextStyle: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+          inputDecoration: InputDecoration(
+            fillColor: Theme.of(context).colorScheme.surface,
+          ),
+          sendButtonBuilder: (send) => IconButton(
+            icon: const Icon(Icons.send),
+            onPressed: send,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+        ),
         currentUser: _user,
         messageOptions: MessageOptions(
           currentUserContainerColor: Theme.of(context).colorScheme.tertiary,
