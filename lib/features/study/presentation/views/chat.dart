@@ -52,7 +52,7 @@ class _ChatViewState extends State<ChatView> with MainBoxMixin {
     _messages.add(
       ChatMessage(
         text:
-            'Hello, in I read next text ${widget.textStudy.text}, can you help me and talk about it, as two friends would do?',
+            'Hello, in I read next text ${widget.textStudy.text.text}, can you help me and talk about it, as two friends would do?',
         user: _user,
         createdAt: DateTime.now(),
       ),
