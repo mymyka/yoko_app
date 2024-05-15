@@ -5,7 +5,6 @@
       "subheading": "Please sign in to continue"
     },
     "login": {
-      "heading": "Log in",
       "button": "Log in",
       "create": "Don't have an account?, create one here",
       "error": {
@@ -25,16 +24,37 @@
   },
   "settings": {
     "heading": "Settings",
-    "language": "Language",
     "theme": "Theme",
+    "system": "System",
     "dark": "Dark",
-    "light": "Light"
+    "light": "Light",
+    "logout": "Logout"
   },
-  "words": {
-    "words_total": "Всього слів",
-    "words_learned": "Слів вивчено"
+  "collection": {
+    "words_total": "Total words",
+    "words_learned": "Words learned",
+    "create_collection_button": "Create collection",
+    "name": "Name",
+    "text": "Text",
+    "public": "Public",
+    "private": "Private",
+    "status": "Status",
+    "blue": "Blue",
+    "red": "Red"
   },
-  "score": {
-    "heading": "Ваш рахунок"
+  "study": {
+    "quiz": {
+      "heading": "Quiz",
+      "score": {
+        "heading": "Score"
+      },
+      "finishButton": "Finish quiz"
+    },
+    "reading": {
+      "heading": "Reading"
+    },
+    "chat": {
+      "heading": "Chat"
+    }
   }
 }

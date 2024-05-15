@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/collections/collections.dart';
 import 'package:yoko_app/features/general/general.dart';
+import 'package:yoko_app/gen/strings.g.dart';
 
 class CreateCollectionView extends StatefulWidget {
   const CreateCollectionView({super.key});
@@ -79,7 +80,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                           child: TextField(
                             controller: _nameController,
                             decoration: InputDecoration(
-                              labelText: 'Name',
+                              labelText: t.collection.name,
                               border: const OutlineInputBorder(),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -130,14 +131,14 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                       children: [
                         DropdownButton(
                           hint: Text(status),
-                          items: const [
+                          items: [
                             DropdownMenuItem(
                               value: 'public',
-                              child: Text('Public'),
+                              child: Text(t.collection.public),
                             ),
                             DropdownMenuItem(
                               value: 'private',
-                              child: Text('Private'),
+                              child: Text(t.collection.private),
                             ),
                           ],
                           onChanged: (v) => {
@@ -171,7 +172,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                     TextField(
                       controller: _textEditingController,
                       decoration: InputDecoration(
-                        labelText: 'Text',
+                        labelText: t.collection.text,
                         border: const OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
@@ -181,7 +182,7 @@ class _CreateCollectionViewState extends State<CreateCollectionView> {
                     ),
                     const SizedBox(height: 20),
                     Button.primary(
-                      text: 'Create Collection',
+                      text: t.collection.create_collection_button,
                       onTap: () {
                         context.read<CreateCollectionPageBloc>().add(
                               CreateCollectionPageCreateCollectionEvent(

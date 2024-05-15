@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/auth/auth.dart';
 import 'package:yoko_app/features/study/study.dart';
+import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/utils/utils.dart';
 
 class ChatView extends StatefulWidget {
@@ -66,7 +67,7 @@ class _ChatViewState extends State<ChatView> with MainBoxMixin {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
-          'GPT Chat',
+          t.study.chat.heading,
           style: TextStyle(
             color: Theme.of(context).colorScheme.onPrimary,
           ),

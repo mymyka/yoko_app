@@ -10,9 +10,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
-  await MainBoxMixin.initHive('main');
+  await MainBoxMixin.initHive('main_test');
   WidgetsFlutterBinding.ensureInitialized();
-  LocaleSettings.useDeviceLocale();
+  // LocaleSettings.useDeviceLocale();
+  LocaleSettings.setLocale(AppLocale.ua);
   await initializeDependencies();
   runApp(const MyApp());
 }

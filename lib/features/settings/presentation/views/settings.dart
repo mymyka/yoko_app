@@ -24,8 +24,7 @@ class NewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 100, left: 30),
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -39,18 +38,18 @@ class NewWidget extends StatelessWidget {
                       children: [
                         DropdownButton(
                           hint: Text(t.settings.theme),
-                          items: const [
+                          items: [
                             DropdownMenuItem(
                               value: ThemeMode.system,
-                              child: Text('System Theme'),
+                              child: Text(t.settings.system),
                             ),
                             DropdownMenuItem(
                               value: ThemeMode.light,
-                              child: Text('Light Theme'),
+                              child: Text(t.settings.light),
                             ),
                             DropdownMenuItem(
                               value: ThemeMode.dark,
-                              child: Text('Dark Theme'),
+                              child: Text(t.settings.dark),
                             ),
                           ],
                           onChanged: (ThemeMode? value) {
@@ -80,7 +79,7 @@ class NewWidget extends StatelessWidget {
             ],
           ),
           Button.primary(
-            text: "Logout",
+            text: t.settings.logout,
             onTap: () {
               context.read<AuthBloc>().add(AuthLogout());
             },

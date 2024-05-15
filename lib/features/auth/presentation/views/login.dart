@@ -63,7 +63,7 @@ class _LoginPageViewState extends State<LoginPageView> {
                     ),
                     const SizedBox(height: 16),
                     Button.primary(
-                      text: "Log In",
+                      text: t.auth.login.button,
                       onPrimary: true,
                       onTap: () {
                         context.read<AuthBloc>().add(

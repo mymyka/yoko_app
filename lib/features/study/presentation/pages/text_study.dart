@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/general/general.dart';
 import 'package:yoko_app/features/study/study.dart';
+import 'package:yoko_app/gen/strings.g.dart';
 
 class TextStudyPage extends StatelessWidget {
   final int collectionId;
@@ -15,7 +16,7 @@ class TextStudyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reading'),
+        title: Text(t.study.reading.heading),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: BlocBuilder<TextStudyBloc, TextStudyState>(

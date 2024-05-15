@@ -16,7 +16,7 @@ class QuizScoreView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              t.score.heading,
+              t.study.quiz.score.heading,
               style: Theme.of(context).textTheme.h2,
             ),
             const SizedBox(height: 20),
@@ -41,7 +41,7 @@ class QuizScoreView extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).pop();
               },
-              text: 'Finish Quiz',
+              text: t.study.quiz.finishButton,
             ),
           ],
         ),

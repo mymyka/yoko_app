@@ -101,14 +101,14 @@ class CollectionPageView extends StatelessWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.account_balance_rounded),
-                title: Text(t.words.words_total),
+                title: Text(t.collection.words_total),
                 subtitle: Text(
                   collection.wordsCount.toString(),
                 ),
               ),
               ListTile(
                 leading: const Icon(Icons.school_rounded),
-                title: Text(t.words.words_learned),
+                title: Text(t.collection.words_learned),
                 subtitle: Text(
                   collection.wordsLearned.toString(),
                 ),

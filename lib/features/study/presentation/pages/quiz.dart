@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yoko_app/features/study/study.dart';
+import 'package:yoko_app/gen/strings.g.dart';
 
 class QuizPage extends StatelessWidget {
   final int collectionId;
@@ -14,7 +15,7 @@ class QuizPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quiz'),
+        title: Text(t.study.quiz.heading),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: QuizPageProvider(

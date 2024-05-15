@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:yoko_app/features/auth/auth.dart';
 import 'package:yoko_app/features/general/general.dart';
+import 'package:yoko_app/gen/strings.g.dart';
 import 'package:yoko_app/utils/ext/ext.dart';
 
 class RegisterPageView extends StatefulWidget {
@@ -89,7 +90,7 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                     ),
                     const SizedBox(height: 16),
                     Button.primary(
-                      text: "Register",
+                      text: t.auth.register.button,
                       onPrimary: true,
                       onTap: () {
                         context.read<AuthBloc>().add(
@@ -109,14 +110,14 @@ class _RegisterPageViewState extends State<RegisterPageView> {
                 Column(
                   children: [
                     Text(
-                      "Already have an account?",
+                      t.auth.register.haveAccount,
                       style: Theme.of(context).textTheme.body?.copyWith(
                             color: Theme.of(context).colorScheme.onPrimary,
                           ),
                     ),
                     Button.link(
                       onPrimary: true,
-                      text: "Login",
+                      text: t.auth.login.button,
                       onTap: () {
                         context.go('/login');
                       },

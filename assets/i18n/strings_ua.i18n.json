@@ -1,40 +1,61 @@
 {
   "auth": {
-    "welcome": {
-      "heading": "Добрий день! ",
-      "subheading": "Please sign in to continue"
-    },
-    "login": {
-      "heading": "Log in",
-      "button": "Log in",
-      "create": "Don't have an account?, create one here",
-      "error": {
-        "heading": "Error",
-        "message": "Invalid email or password, please try again"
+      "welcome": {
+          "heading": "Ласкаво просимо",
+          "subheading": "Будь ласка, увійдіть, щоб продовжити"
+      },
+      "login": {
+          "heading": "Увійти",
+          "button": "Увійти",
+          "create": "Ще не маєте облікового запису? Створіть один тут",
+          "error": {
+              "heading": "Помилка",
+              "message": "Недійсна електронна пошта або пароль. Будь ласка, спробуйте знову"
+          }
+      },
+      "register": {
+          "heading": "Зареєструватися",
+          "button": "Зареєструватися",
+          "haveAccount": "Вже маєте обліковий запис? Увійдіть тут",
+          "error": {
+              "heading": "Помилка",
+              "message": "Недійсна електронна пошта або пароль. Будь ласка, спробуйте знову"
+          }
       }
-    },
-    "register": {
-      "heading": "Register",
-      "button": "Register",
-      "haveAccount": "Already have an account?, sign in here",
-      "error": {
-        "heading": "Error",
-        "message": "Invalid email or password, please try again"
-      }
-    }
   },
   "settings": {
-    "heading": "Налаштування",
-    "language": "Language",
-    "theme": "Theme",
-    "dark": "Dark",
-    "light": "Light"
+      "heading": "Налаштування",
+      "theme": "Тема",
+      "system": "Системна",
+      "dark": "Темна",
+      "light": "Світла",
+      "logout": "Вийти"
   },
-  "words": {
-    "words_total": "Total words",
-    "words_learned": "Learned words"
+  "collection": {
+      "words_total": "Загальна кількість слів",
+      "words_learned": "Вивчені слова",
+      "create_collection_button": "Створити колекцію",
+      "name": "Назва",
+      "text": "Текст",
+      "public": "Публічна",
+      "private": "Приватна",
+      "status": "Видимість",
+      "blue": "Синя",
+      "red": "Червона"
   },
-  "score": {
-    "heading": "Score"
+  "study": {
+      "quiz": {
+          "heading": "Квіз",
+          "score": {
+              "heading": "Результат"
+          },
+          "finishButton": "Завершити"
+      },
+      "reading": {
+          "heading": "Читання"
+      },
+      "chat": {
+          "heading": "Чат"
+      }
   }
 }

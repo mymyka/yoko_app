@@ -21,23 +21,27 @@ class WelcomePage extends StatelessWidget {
               children: [
                 Lottie.asset(
                   'assets/lottie/welcome-light.json',
+                  height: 300,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      t.auth.welcome.heading,
-                      style: Theme.of(context).textTheme.h1?.copyWith(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                    ),
-                    Text(
-                      t.auth.welcome.subheading,
-                      style: Theme.of(context).textTheme.h4?.copyWith(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        t.auth.welcome.heading,
+                        style: Theme.of(context).textTheme.h1?.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                      ),
+                      Text(
+                        t.auth.welcome.subheading,
+                        style: Theme.of(context).textTheme.h4?.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
