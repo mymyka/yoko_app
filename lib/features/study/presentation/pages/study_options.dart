@@ -20,7 +20,7 @@ class StudyOptionsPage extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 context
-                    .go('/$parentRoute/collection/${collectionId}/study/quiz');
+                    .go('/$parentRoute/collection/$collectionId/study/quiz');
               },
               child: Container(
                 width: 200,
@@ -41,7 +41,7 @@ class StudyOptionsPage extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 context
-                    .go('/$parentRoute/collection/${collectionId}/study/text');
+                    .go('/$parentRoute/collection/$collectionId/study/text');
               },
               child: Container(
                 width: 200,
@@ -62,7 +62,7 @@ class StudyOptionsPage extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 context
-                    .go('/$parentRoute/collection/${collectionId}/study/chat');
+                    .go('/$parentRoute/collection/$collectionId/study/chat');
               },
               child: Container(
                 width: 200,
