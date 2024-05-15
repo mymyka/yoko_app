@@ -12,8 +12,8 @@ void main() async {
   await dotenv.load(fileName: ".env");
   await MainBoxMixin.initHive('main_box');
   WidgetsFlutterBinding.ensureInitialized();
-  LocaleSettings.useDeviceLocale();
-  // LocaleSettings.setLocale(AppLocale.ua);
+  // LocaleSettings.useDeviceLocale();
+  LocaleSettings.setLocale(AppLocale.ua);
   await initializeDependencies();
   runApp(const MyApp());
 }

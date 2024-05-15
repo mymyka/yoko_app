@@ -32,12 +32,14 @@ class WelcomePage extends StatelessWidget {
                         style: Theme.of(context).textTheme.h1?.copyWith(
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         t.auth.welcome.subheading,
                         style: Theme.of(context).textTheme.h4?.copyWith(
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
