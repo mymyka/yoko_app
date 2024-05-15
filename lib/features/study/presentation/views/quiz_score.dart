@@ -40,9 +40,9 @@ class QuizScoreView extends StatelessWidget {
             const SizedBox(height: 20),
             Button.outlined(
               onTap: () {
-                context.go('/home');
+                Navigator.of(context).pop();
               },
-              text: 'Back to home',
+              text: 'Finish Quiz',
             ),
           ],
         ),
