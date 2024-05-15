@@ -21,7 +21,6 @@ class WelcomePage extends StatelessWidget {
               children: [
                 Lottie.asset(
                   'assets/lottie/welcome-light.json',
-                  height: 300,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 16),
