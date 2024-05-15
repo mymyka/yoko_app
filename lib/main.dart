@@ -10,7 +10,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
-  await MainBoxMixin.initHive('yoko_app_test_run_new_lol');
+  await MainBoxMixin.initHive('main');
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
   await initializeDependencies();

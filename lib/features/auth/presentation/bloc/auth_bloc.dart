@@ -17,6 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with MainBoxMixin {
     on<AuthCheckLocal>(_onCheckLocal);
     on<AuthLogin>(_onAuthLogin);
     on<AuthRegister>(_onAuthRegister);
+    on<AuthLogout>(_onLogout);
   }
 
   void _onCheckLocal(AuthCheckLocal event, Emitter<AuthState> emit) {
@@ -60,5 +61,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with MainBoxMixin {
         emit(AuthSuccess(authUserEntity));
       },
     );
+  }
+
+  void _onLogout(
+    AuthLogout event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+    await removeData(MainBoxKeys.token);
+    await removeData(MainBoxKeys.user);
+    emit(AuthLogoutSuccess());
   }
 }

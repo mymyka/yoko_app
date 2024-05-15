@@ -1,83 +1,62 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yoko_app/features/settings/presentation/bloc/theme_bloc.dart';
-import 'package:yoko_app/gen/strings.g.dart';
-import 'package:yoko_app/utils/ext/ext.dart';
+import 'package:go_router/go_router.dart';
+import 'package:yoko_app/features/auth/auth.dart';
+import 'package:yoko_app/features/general/general.dart';
+import 'package:yoko_app/features/settings/settings.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: NewWidget(),
-    );
-  }
-}
-
-class NewWidget extends StatelessWidget {
-  const NewWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 100, left: 30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text(t.settings.heading, style: Theme.of(context).textTheme.h2),
-          Column(
-            children: [
-              Center(
-                child: BlocBuilder<ThemeBloc, ThemeMode>(
-                  builder: (context, state) {
-                    return Column(
-                      children: [
-                        DropdownButton(
-                          hint: Text(t.settings.theme),
-                          items: const [
-                            DropdownMenuItem(
-                              value: ThemeMode.system,
-                              child: Text('System Theme'),
-                            ),
-                            DropdownMenuItem(
-                              value: ThemeMode.light,
-                              child: Text('Light Theme'),
-                            ),
-                            DropdownMenuItem(
-                              value: ThemeMode.dark,
-                              child: Text('Dark Theme'),
-                            ),
-                          ],
-                          onChanged: (ThemeMode? value) {
-                            context.read<ThemeBloc>().add(ThemeChanged(value!));
-                          },
-                        ),
-                      ],
-                    );
-                  },
+    return Scaffold(
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is AuthFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                elevation: 0,
+                content: AwesomeSnackbarContent(
+                  message: state.message,
+                  title: 'Error',
+                  contentType: ContentType.failure,
                 ),
+                backgroundColor: Colors.transparent,
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/img/flags/us.png', width: 50, height: 50),
-              Switch(
-                value: TranslationProvider.of(context).locale == AppLocale.ua,
-                onChanged: (languageSwitched) {
-                  final newLocale =
-                      languageSwitched ? AppLocale.ua : AppLocale.en;
-                  LocaleSettings.setLocale(newLocale);
-                },
+            );
+          } else if (state is AuthLogoutSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                elevation: 0,
+                content: AwesomeSnackbarContent(
+                  message: 'Logout successful',
+                  title: 'Success',
+                  contentType: ContentType.success,
+                ),
+                backgroundColor: Colors.transparent,
               ),
-              Image.asset('assets/img/flags/ua.png', width: 50, height: 50),
-            ],
-          )
-        ],
+            );
+            context.go('/welcome');
+          }
+        },
+        builder: (BuildContext context, AuthState state) {
+          if (state is AuthLoading) {
+            return const Center(
+              child: Spinner(),
+            );
+          } else if (state is AuthSuccess) {
+            return const SettingsPageView();
+          } else if (state is AuthFailure) {
+            return Center(
+              child: Text(state.message),
+            );
+          }
+          return const Center(
+            child: Spinner(),
+          );
+        },
       ),
     );
   }
