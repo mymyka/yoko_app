@@ -13,7 +13,10 @@ class QuizPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Quiz')),
+      appBar: AppBar(
+        title: const Text('Quiz'),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      ),
       body: QuizPageProvider(
         collectionId: collectionId,
         child: BlocBuilder<QuizBloc, QuizState>(

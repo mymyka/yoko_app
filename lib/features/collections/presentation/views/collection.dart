@@ -7,8 +7,13 @@ import 'package:yoko_app/utils/ext/ext.dart';
 
 class CollectionPageView extends StatelessWidget {
   final CollectionEntity collection;
+  final String parentRoute;
 
-  const CollectionPageView({super.key, required this.collection});
+  const CollectionPageView({
+    super.key,
+    required this.collection,
+    required this.parentRoute,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +71,9 @@ class CollectionPageView extends StatelessWidget {
                   collection.isStarted
                       ? IconButton(
                           onPressed: () => {
-                            context
-                                .go('/home/collection/${collection.id}/study')
+                            context.go(
+                              '/$parentRoute/collection/${collection.id}/study',
+                            )
                           },
                           icon: const Icon(Icons.school_rounded),
                         )

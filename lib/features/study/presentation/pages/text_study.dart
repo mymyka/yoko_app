@@ -14,7 +14,10 @@ class TextStudyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Reading'),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      ),
       body: BlocBuilder<TextStudyBloc, TextStudyState>(
         builder: (context, state) {
           if (state is TextStudyInitial) {

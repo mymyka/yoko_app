@@ -5,8 +5,13 @@ import 'package:yoko_app/features/general/general.dart';
 
 class CollectionPage extends StatelessWidget {
   final int id;
+  final String parentRoute;
 
-  const CollectionPage({super.key, required this.id});
+  const CollectionPage({
+    super.key,
+    required this.id,
+    required this.parentRoute,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,10 @@ class CollectionPage extends StatelessWidget {
               child: Spinner(),
             );
           } else if (state is CollectionPageLoaded) {
-            return CollectionPageView(collection: state.collection);
+            return CollectionPageView(
+              collection: state.collection,
+              parentRoute: parentRoute,
+            );
           } else if (state is CollectionPageError) {
             return Center(
               child: Text(state.message),
