@@ -49,16 +49,4 @@ mixin class MainBoxMixin {
     removeData(MainBoxKeys.isLogin);
     removeData(MainBoxKeys.token);
   }
-
-  // Future<void> clearData() async {
-  //   try {
-  //     if (mainBox != null) {
-  //       await mainBox?.close();
-  //       await mainBox?.deleteFromDisk();
-  //     }
-  //   } catch (e, stackTrace) {
-  //     // ignore: avoid_print
-  //     print('Error: $e\nStack: $stackTrace');
-  //   }
-  // }
 }
