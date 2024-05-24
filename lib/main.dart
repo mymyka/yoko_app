@@ -12,8 +12,7 @@ void main() async {
   await dotenv.load(fileName: ".env");
   await MainBoxMixin.initHive('main_box');
   WidgetsFlutterBinding.ensureInitialized();
-  // LocaleSettings.useDeviceLocale();
-  LocaleSettings.setLocale(AppLocale.ua);
+  LocaleSettings.useDeviceLocale();
   await initializeDependencies();
   runApp(const MyApp());
 }
@@ -21,7 +20,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

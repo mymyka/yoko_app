@@ -34,7 +34,6 @@ mixin class MainBoxMixin {
   }
 
   T getData<T>(MainBoxKeys key) {
-    print(mainBox!.get(key.name));
     return mainBox!.get(key.name) as T;
   }
 
@@ -51,15 +50,15 @@ mixin class MainBoxMixin {
     removeData(MainBoxKeys.token);
   }
 
-  Future<void> clearData() async {
-    try {
-      if (mainBox != null) {
-        await mainBox?.close();
-        await mainBox?.deleteFromDisk();
-      }
-    } catch (e, stackTrace) {
-      // ignore: avoid_print
-      print('Error: $e\nStack: $stackTrace');
-    }
-  }
+  // Future<void> clearData() async {
+  //   try {
+  //     if (mainBox != null) {
+  //       await mainBox?.close();
+  //       await mainBox?.deleteFromDisk();
+  //     }
+  //   } catch (e, stackTrace) {
+  //     // ignore: avoid_print
+  //     print('Error: $e\nStack: $stackTrace');
+  //   }
+  // }
 }

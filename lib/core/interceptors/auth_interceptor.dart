@@ -21,7 +21,6 @@ class AuthInterceptor extends Interceptor with MainBoxMixin {
   ) async {
     if (err.response?.statusCode == 401) {
       logout();
-      clearData();
     }
     super.onError(err, handler);
   }

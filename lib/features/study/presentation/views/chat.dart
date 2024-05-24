@@ -108,16 +108,6 @@ class _ChatViewState extends State<ChatView> with MainBoxMixin {
               textColor: Theme.of(context).colorScheme.onPrimary,
             ),
           ),
-          // b: (Function onSend) {
-          //   return IconButton(
-          //     icon: Icon(Icons.send),
-          //     onPressed: () {
-          //       // Call onSend function when button is pressed
-          //       onSend();
-          //     },
-          //     color: Colors.blue, // Change the color here
-          //   );
-          // },
         ),
         onSend: (ChatMessage m) {
           getChatResponse(m);
@@ -149,14 +139,17 @@ class _ChatViewState extends State<ChatView> with MainBoxMixin {
     final response = await _openAI.onChatCompletion(request: request);
     for (var element in response!.choices) {
       if (element.message != null) {
-        setState(() {
-          _messages.insert(
+        setState(
+          () {
+            _messages.insert(
               0,
               ChatMessage(
                   user: _gptChatUser,
                   createdAt: DateTime.now(),
-                  text: element.message!.content));
-        });
+                  text: element.message!.content),
+            );
+          },
+        );
       }
     }
     setState(() {
